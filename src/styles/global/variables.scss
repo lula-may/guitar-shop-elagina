@@ -4,10 +4,16 @@ $fnt-size-basic: 14px;
 
 // COLORS: BACKGROUND
 $bg-basic: #ffffff;
+$bg-header: rgba(30, 9, 6, 0.15);
+
 
 // COLORS: TEXT
 $text-clr-basic: #000000;
+$text-clr-hvr: #474747;
+$text-clr-act: rgba($text-clr-hvr, 0.5);
+$text-clr-counter: #f20505;
 
 // LAYOUT SIZES
+$desktop-width: 1170px;
 $tablet-width: 1023px;
 $mobile-width: 767px;

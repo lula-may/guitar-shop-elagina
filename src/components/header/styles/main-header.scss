@@ -1,0 +1,42 @@
+.main-header {
+  position: relative;
+  z-index: 2;
+  line-height: 1.429;
+  letter-spacing: 0.05em;
+  overflow-x: hidden;
+
+  a {
+    color: inherit;
+  }
+
+  a:hover {
+    color: $text-clr-hvr;
+  }
+
+  a:active {
+    color: $text-clr-act;
+  }
+}
+
+.main-header__container {
+  position: relative;
+  @include container();
+}
+
+.main-header__image {
+  height: 262px;
+
+  background-image: url("../img/line-header.svg");
+  background-repeat: repeat-x;
+  background-position: 0 24px;
+
+  img {
+    position: absolute;
+    z-index: 2;
+    top: -32px;
+    left: 200px;
+    width: 878px;
+    height: auto;
+  }
+}
+

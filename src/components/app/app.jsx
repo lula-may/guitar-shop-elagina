@@ -1,48 +1,13 @@
+import React from "react";
 import {BrowserRouter, Link} from "react-router-dom";
+
+import Header from "../header/header";
 
 function App() {
   return (
     <BrowserRouter>
-      <header className="main-header">
-        <nav className="main-header__nav main-nav">
-          <div className="main-nav__wrapper">
-            <div className="main-header__logo logo">
-              <Link to="#" className="logo__link">
-                <img src="img/logo-black.png" width="67" height="70" alt="Логотип Guitar Shop" />
-              </Link>
-            </div>
-            <ul className="site-nav">
-              <li className="site-nav__item">
-                <Link className="site-nav__link" to="#">Каталог</Link>
-              </li>
-              <li className="site-nav__item">
-                <Link className="site-nav__link" to="#">Где купить?</Link>
-              </li>
-              <li className="site-nav__item">
-                <Link className="site-nav__link" to="#">О компании</Link>
-              </li>
-              <li className="site-nav__item">
-                <Link className="site-nav__link" to="#">Cервис-центры</Link>
-              </li>
-            </ul>
-            <ul className="user-nav">
-              <li className="user-nav__item">
-                <Link to="#" className="user-nav__link">Карта</Link>
-              </li>
-              <li className="user-nav__item">
-                <Link to="#" className="user-nav__link">Поиск</Link>
-              </li>
-              <li className="user-nav__item">
-                <Link to="#" className="user-nav__link">Корзина</Link>
-              </li>
-            </ul>
-          </div>
-        </nav>
-        <div className="main-header__image">
-          <img src="img/guitar-header.png" width="878" height="282" alt="Электрогитара" />
-        </div>
-      </header>
-      <main className="main">
+      <Header/>
+      <main className="page__main main">
         <h1>Каталог гитар</h1>
         <ul className="main__breadcrumbs breadcrumbs">
           <li className="breadcrumbs__item"><Link to="#" className="breadcrumbs__link">Главная</Link></li>
