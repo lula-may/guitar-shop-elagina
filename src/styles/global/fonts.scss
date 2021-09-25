@@ -1,0 +1,27 @@
+@font-face {
+  font-family: "Droid Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../../fonts/DroidSans.woff2") format("woff2"),
+    url("../../fonts/DroidSans.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Droid Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../../fonts/DroidSans-Bold.woff2") format("woff2"),
+    url("../../fonts/DroidSans-Bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../../fonts/Poppins-Regular.woff2") format("woff2"),
+    url("../../fonts/Poppins-Regular.woff") format("woff");
+}
+
