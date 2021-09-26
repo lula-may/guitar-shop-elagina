@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./style.scss";
 
 import Breadcrumbs from "../breadcrumbs/breadcrumbs";
+import Filter from "../filter/filter";
 
 const breadcrumbs = [
   {id: 1, url: '#', text: 'Главная'},
@@ -18,61 +19,7 @@ export default function Main() {
           <Breadcrumbs links={breadcrumbs} />
         </div>
         <div className="main__container">
-          <section className="main__filter filter">
-            <h2>Фильтр</h2>
-            <div className="filter__item">
-              <h3>Цена, ₽</h3>
-              <div className="filter__price price-range">
-                <div className="price-range__field">
-                  <input id="price-min" type="text" value="1 000" />
-                  <label className="visually-hidden" htmlFor="price-min">Минимальная цена</label>
-                </div>
-                <div className="price-range__field">
-                  <input id="price-max" type="text" value="30 000"/>
-                  <label className="visually-hidden" htmlFor="price-max">Максимальная цена</label>
-                </div>
-              </div>
-            </div>
-            <div className="filter__item">
-              <h3>Тип гитар</h3>
-              <ul className="checkbox-list">
-                <li className="checkbox-list__item">
-                  <label htmlFor="type-1">Акустические гитары</label>
-                  <input type="checkbox" name="type" id="type-1"/>
-                </li>
-                <li className="checkbox-list__item">
-                  <label htmlFor="type-2">Электрогитары</label>
-                  <input type="checkbox" name="type" id="type-2"/>
-                </li>
-                <li className="checkbox-list__item">
-                  <label htmlFor="type-3">Укулеле</label>
-                  <input type="checkbox" name="type" id="type-3"/>
-                </li>
-              </ul>
-            </div>
-            <div className="filter__item">
-              <h3>Количество струн</h3>
-                <ul className="checkbox-list">
-                  <li className="checkbox-list__item">
-                    <label htmlFor="strings-1">4</label>
-                    <input type="checkbox" name="type" id="strings-1"/>
-                  </li>
-                  <li className="checkbox-list__item">
-                    <label htmlFor="strings-2">6</label>
-                    <input type="checkbox" name="type" id="strings-2"/>
-                  </li>
-                  <li className="checkbox-list__item">
-                    <label htmlFor="strings-3">7</label>
-                    <input type="checkbox" name="type" id="strings-3"/>
-                  </li>
-                  <li className="checkbox-list__item">
-                    <label htmlFor="strings-4">12</label>
-                    <input type="checkbox" name="type" id="strings-4"/>
-                  </li>
-              </ul>
-            </div>
-            <button className="filter__button">Показать</button>
-          </section>
+          <Filter/>
           <section className="main__catalog catalog">
             <h2 className="visually-hidden">Список товаров</h2>
             <div className="catalog__sort sort">

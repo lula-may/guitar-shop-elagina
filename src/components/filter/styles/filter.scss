@@ -1,0 +1,32 @@
+.filter {
+  h2,
+  h3 {
+    @include offset-reset();
+
+    font-size: $fnt-size-subheading;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  h2 {
+    margin-bottom: 30px;
+  }
+
+  h3 {
+    margin-bottom: 24px;
+  }
+}
+
+.filter__item {
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  border-top: 1px solid $bdr-clr-filter;
+}
+
+.filter__button {
+  padding: 8px 28px;
+  font-size: 12px;
+  line-height: normal;
+  text-transform: uppercase;
+}

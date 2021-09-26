@@ -1,0 +1,48 @@
+.checkbox-list {
+  @include list-reset();
+
+  font-size: $fnt-size-label;
+  line-height: normal;
+}
+
+.checkbox-list__item {
+  margin-bottom: 12px;
+
+  label {
+    display: flex;
+    align-items: center;
+  }
+
+  label::before {
+    content: "";
+    width: 24px;
+    height: 24px;
+    margin-right: 16px;
+
+    border: 1px solid $bdr-clr-input;
+    border-radius: 2px;
+  }
+
+  input:checked + label::before {
+    background-image: url("../img/check-mark.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  input:hover + label::before {
+    border-color: $dash-clr;
+  }
+
+  input:active + label::before {
+    border-color: $bg-button;
+  }
+
+  input:disabled + label {
+    color: $text-disabled;
+
+    &::before {
+      border-color: $text-disabled;
+      background-color: $bg-checkbox;
+    }
+  }
+}

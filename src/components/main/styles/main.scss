@@ -14,3 +14,13 @@
 .main__wrapper {
   @include container();
 }
+
+.main__breadcrumbs {
+  margin-bottom: 40px;
+}
+
+.main__container {
+  display: grid;
+  grid-template-columns: 22.12% 74.35%;
+  column-gap: 3.53%;
+}
