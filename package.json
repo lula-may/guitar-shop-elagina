@@ -39,6 +39,7 @@
     ]
   },
   "devDependencies": {
+    "eslint-config-htmlacademy": "4.0.2",
     "stylelint": "13.13.1",
     "stylelint-config-htmlacademy": "0.1.10"
   }
