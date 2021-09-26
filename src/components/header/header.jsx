@@ -29,21 +29,21 @@ export default function Header() {
           <ul className="main-nav__user user-nav">
             <li className="user-nav__item">
               <Link to="#" className="user-nav__link" aria-label="Карта">
-                <svg class="user-nav__icon" width="14" height="17">
+                <svg className="user-nav__icon" width="14" height="17">
                   <use xlinkHref="#map"/>
                 </svg>
               </Link>
             </li>
             <li className="user-nav__item">
               <Link to="#" className="user-nav__link" aria-label="Поиск">
-                <svg class="user-nav__icon" width="14" height="14">
+                <svg className="user-nav__icon" width="14" height="14">
                   <use xlinkHref="#search"/>
                 </svg>
               </Link>
             </li>
             <li className="user-nav__item">
               <Link to="#" className="user-nav__link" aria-label="Корзина">
-                <svg class="user-nav__icon" width="16" height="18">
+                <svg className="user-nav__icon" width="16" height="18">
                   <use xlinkHref="#basket"/>
                 </svg>
                 <span className="user-nav__counter">2</span>
