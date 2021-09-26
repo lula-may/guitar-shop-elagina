@@ -1,6 +1,7 @@
 // TYPOGRAPHY
 $font-basic: "Droid Sans", "Arial", sans-serif;
 $fnt-size-heading: 22px;
+$fnt-size-subheading: 18px;
 $fnt-size-label: 16px;
 $fnt-size-basic: 14px;
 $fnt-size-footer: 10px;
@@ -9,12 +10,24 @@ $fnt-size-footer: 10px;
 $bg-basic: #ffffff;
 $bg-header: rgba(30, 9, 6, 0.15);
 $bg-footer: #3f3f3f;
+$bg-checkbox: #f6f3f3;
+$bg-button: #c1c1c1;
+$bg-bright: #e27f00;
+$bg-bright-hvr: #ffa839;
+$bg-bright-act: #da8b26;
 
 // COLORS: TEXT
 $text-clr-basic: #000000;
 $text-clr-hvr: #474747;
 $text-clr-act: rgba($text-clr-hvr, 0.5);
 $text-clr-counter: #f20505;
+$text-disabled: #dddddd;
+
+// COLORS: BORDERS
+$bdr-clr-filter: #dddada;
+$dash-clr: #585757;
+$bdr-clr-input: #9f9e9e;
+$bdr-button-act: rgba(#6c6c6c, 0.5);
 
 // LAYOUT SIZES
 $desktop-width: 1170px;
