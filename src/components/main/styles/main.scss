@@ -1,0 +1,16 @@
+.main {
+  margin-bottom: 60px;
+
+  h1 {
+    @include offset-reset();
+    margin-bottom: 20px;
+
+    font-size: $fnt-size-heading;
+    line-height: normal;
+    font-weight: bold;
+  }
+}
+
+.main__wrapper {
+  @include container();
+}
