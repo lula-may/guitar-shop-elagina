@@ -1,16 +1,20 @@
 import React from "react";
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 
-import Footer from "../footer/footer";
-import Header from "../header/header";
 import Main from "../main/main";
+import Cart from "../cart/cart";
 
 function App() {
   return (
     <BrowserRouter>
-      <Header/>
-      <Main/>
-      <Footer/>
+      <Switch>
+        <Route exact path="/">
+          <Main/>
+        </Route>
+        <Route exact path="/cart">
+          <Cart/>
+        </Route>
+      </Switch>
     </BrowserRouter>
   );
 }

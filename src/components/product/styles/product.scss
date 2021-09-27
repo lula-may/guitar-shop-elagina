@@ -1,0 +1,126 @@
+.product {
+  position: relative;
+  display: grid;
+  grid-template-columns: 45% 45%;
+  column-gap: 10%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  border-top: 1px solid $bdr-clr-filter;
+}
+
+.product__delete {
+  @include button-reset();
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 20px;
+  height: 20px;
+
+  background-image: url('../img/cross.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 12px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.product__info {
+  display: flex;
+  padding-left: 40px;
+}
+
+.product__image {
+  width: 33%;
+  img {
+    height: auto;
+    width: auto;
+    max-height: 164px;
+    max-width: 100%;
+  }
+}
+
+.product__description {
+  width: 67%;
+  h2 {
+    @include offset-reset();
+    margin-bottom: 14px;
+    font-size: $fnt-size-label;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  p {
+    @include offset-reset();
+    margin-bottom: 6px;
+    font-size: 14px;
+    line-height: 1.071;
+    letter-spacing: 0.05em;
+  }
+}
+.product__numbers {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: $fnt-size-footer *2;
+  line-height: 1;
+  letter-spacing: 0.05em;
+}
+
+.product__price {
+  font-weight: normal;
+}
+
+.product__total {
+  font-weight: bold;
+}
+
+.product__counter {
+  display: flex;
+  margin-top: 20px;
+  height: 30px;
+  align-self: flex-start;
+
+  color: $bdr-clr-input;
+  border: 1px solid $bdr-clr-input;
+
+  input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    padding: 2px;
+
+    color: inherit;
+    font-size: $fnt-size-label;
+
+    border-top: none;
+    border-bottom: none;
+    border-radius: 0;
+    border-left: 1px solid $bdr-clr-input;
+    border-right: 1px solid $bdr-clr-input;
+  }
+}
+
+.product__control {
+  width: 26px;
+
+  color: inherit;
+
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 8px;
+  background-position: center;
+  cursor: pointer;
+  &--minus {
+    background-image: url("../img/minus.svg");
+  }
+
+  &--plus {
+    background-image: url("../img/plus.svg");
+  }
+}

@@ -1,0 +1,50 @@
+.promocode {
+  h3 {
+    @include offset-reset();
+    margin-bottom: 9px;
+
+    font-size: $fnt-size-label;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.05em;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 20px;
+
+    font-size: $fnt-size-button;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: 0.05em;
+  }
+}
+
+.promocode__wrapper {
+  width: 403px;
+  display: flex;
+  justify-content: space-between;
+
+  input,
+  button {
+    font-size: $fnt-size-label;
+    line-height: 1;
+    letter-spacing: 0.05em;
+    text-align: center;
+  }
+
+  input {
+    width: 170px;
+    height: 36px;
+
+    color: inherit;
+    border: 2px solid $bdr-clr-filter;
+    border-radius: 2px;
+  }
+
+  .promocode__button {
+    padding-left: 22px;
+    padding-right: 22px;
+    min-width: 200px;
+  }
+}
