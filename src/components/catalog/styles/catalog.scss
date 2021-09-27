@@ -1,3 +1,19 @@
 .catalog__sort {
   margin-bottom: 29px;
 }
+
+.catalog__list {
+  @include list-reset();
+  width: 100%;
+  margin-bottom: 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 220px);
+  column-gap: calc(50% - 330px);
+  row-gap: 30px;
+}
+
+@media (max-width: $mobile-width) {
+  .catalog__list {
+    display: block;
+  }
+}
