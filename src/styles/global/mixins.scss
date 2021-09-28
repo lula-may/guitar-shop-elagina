@@ -25,6 +25,14 @@
   color: $text-clr-basic;
 }
 
+@mixin big-button-font() {
+  font-family: $font-basic;
+  font-size: $fnt-size-label;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
 // LAYOUT STYLES
 @mixin container() {
   width: calc(100% - 80px);

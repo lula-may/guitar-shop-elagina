@@ -18,6 +18,11 @@
   img {
     display: block;
   }
+
+  &--lock {
+    position: fixed;
+    overflow-y: scroll;
+  }
 }
 
 .page__main {
