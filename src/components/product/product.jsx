@@ -7,7 +7,7 @@ export default function Product() {
       <button className="product__delete" aria-label="Удалить из корзины"></button>
       <div className="product__info">
         <div className="product__image">
-          <img src="img/electro.png" width="48" height="124" alt="Фото гитары " />
+          <img src="img/electro.png" width="48" height="128" alt="Фото гитары " />
         </div>
         <div className="product__description">
           <h2>ЭлектроГитара Честер bass</h2>

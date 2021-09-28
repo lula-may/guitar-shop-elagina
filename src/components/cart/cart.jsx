@@ -19,7 +19,7 @@ export default function Cart() {
   return (
     <Fragment>
       <Header/>
-        <main className="page__main main">
+        <main className="page__main main main--cart">
         <div className="main__wrapper">
           <h1>Корзина</h1>
           <div className="main__breadcrumbs">

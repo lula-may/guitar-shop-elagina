@@ -1,6 +1,4 @@
 .main {
-  margin-bottom: 60px;
-
   h1 {
     @include offset-reset();
     margin-bottom: 20px;
@@ -9,6 +7,16 @@
     line-height: normal;
     font-weight: bold;
   }
+
+  &--catalog {
+    margin-top: -48px;
+    margin-bottom: 54px;
+  }
+
+  &--cart {
+    margin-top: -24px;
+    margin-bottom: 86px;
+  }
 }
 
 .main__wrapper {
@@ -16,13 +24,14 @@
 }
 
 .main__breadcrumbs {
-  margin-bottom: 40px;
+  padding-bottom: 28px;
 }
 
 .main__container {
+  margin-top: 22px;
   display: grid;
-  grid-template-columns: 22.12% 74.35%;
-  column-gap: 3.53%;
+  grid-template-columns: 22.1% 74.5%;
+  column-gap: 3.4%;
 }
 
 @media (max-width: $tablet-width) {

@@ -6,6 +6,7 @@ import Catalog from "../catalog/catalog";
 import Filter from "../filter/filter";
 import Footer from "../footer/footer";
 import Header from "../header/header";
+import Popup from "../popup/popup";
 
 const pages = [
   {id: 1, url: '/', text: 'Главная'},
@@ -16,7 +17,7 @@ export default function Main() {
   return (
     <Fragment>
       <Header/>
-      <main className="page__main main">
+      <main className="page__main main main--catalog">
         <div className="main__wrapper">
           <h1>Каталог гитар</h1>
           <div className="main__breadcrumbs">
@@ -29,6 +30,7 @@ export default function Main() {
         </div>
       </main>
       <Footer/>
+      <Popup/>
     </Fragment>
   );
 }

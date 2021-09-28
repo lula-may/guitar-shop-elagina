@@ -1,5 +1,6 @@
 .social {
   @include list-reset();
+  padding-left: 1px;
   display: flex;
   flex-wrap: wrap;
   font-size: 0;
@@ -15,7 +16,7 @@
 
 .social__item {
   margin-right: 22px;
-  padding-top: 10px;
+  padding-bottom: 9px;
 }
 
 .social__link {

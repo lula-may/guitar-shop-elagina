@@ -1,11 +1,11 @@
 .catalog__sort {
-  margin-bottom: 29px;
+  margin-bottom: 28px;
 }
 
 .catalog__list {
   @include list-reset();
   width: 100%;
-  margin-bottom: 32px;
+  margin-bottom: 30px;
   display: grid;
   grid-template-columns: repeat(3, 220px);
   column-gap: calc(50% - 330px);

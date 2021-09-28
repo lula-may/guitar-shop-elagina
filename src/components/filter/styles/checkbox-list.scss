@@ -8,6 +8,10 @@
 .checkbox-list__item {
   margin-bottom: 12px;
 
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   label {
     display: flex;
     align-items: center;

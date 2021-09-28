@@ -1,6 +1,6 @@
 .cart__list {
   @include list-reset();
-  margin-bottom: 40px;
+  margin-bottom: 37px;
 
   border-bottom: 1px solid $bdr-clr-filter;
 }
@@ -17,8 +17,10 @@
 .cart__total {
   h2 {
     @include offset-reset();
-    margin-bottom: 40px;
+    margin-bottom: 42px;
+    margin-right: 10px;
 
+    text-align: right;
     font-size: $fnt-size-footer *2;
     font-weight: 700;
     line-height: 1;
