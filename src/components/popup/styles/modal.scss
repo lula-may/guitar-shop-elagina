@@ -1,0 +1,100 @@
+.modal {
+  position: relative;
+  width: 740px;
+  margin: 0 auto;
+  padding: 30px 50px 26px;
+
+  background-color: $bg-basic;
+  border-radius: 4px;
+  box-shadow: 0px 5px 6px 0px #3F3F3F33;
+
+  h2 {
+    @include offset-reset();
+    margin-bottom: 20px;
+
+    font-size: $fnt-size-subheading;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    color: $text-clr-hvr;
+  }
+}
+
+.modal__close {
+  @include button-reset();
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+
+  background-image: url('../img/cross.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 12px;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.6;
+  }
+
+  &:active {
+    opacity: 0.3;
+  }
+}
+
+.modal__wrapper {
+  display: flex;
+  align-items: flex-start;
+
+  &--product {
+    justify-content: space-between;
+  }
+
+  &--success {
+    justify-content: center;
+    padding-bottom: 22px;
+
+    .modal__button {
+      margin-left: 18px;
+      margin-right: 19px;
+    }
+  }
+}
+
+.modal__column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  .modal__button {
+    margin-top: 16px;
+  }
+}
+
+.modal__button {
+  min-width: 220px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-top: 14px;
+
+  @include big-button-font();
+}
+
+@media (max-width: $tablet-width) {
+  .modal {
+    width: 680px;
+  }
+}
+
+@media (max-width: $mobile-width) {
+  .modal {
+    width: 100%;
+  }
+
+  .modal__wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+}
