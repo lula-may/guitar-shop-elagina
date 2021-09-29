@@ -7,6 +7,7 @@ const products = [
     reviews: 15,
     strings: 7,
     price: 17500,
+    rating: 4.5,
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ const products = [
     reviews: 9,
     strings: 7,
     price: 29500,
+    rating: 3.5,
   },
   {
     id: 3,
@@ -25,6 +27,7 @@ const products = [
     reviews: 21,
     strings: 4,
     price: 6800,
+    rating: 4.8,
   },
   {
     id: 4,
@@ -34,6 +37,7 @@ const products = [
     reviews: 15,
     strings: 6,
     price: 30000,
+    rating: 1.5,
   },
   {
     id: 5,
@@ -43,6 +47,7 @@ const products = [
     reviews: 5,
     strings: 7,
     price: 3500,
+    rating: 3.5,
   },
   {
     id: 6,
@@ -52,6 +57,7 @@ const products = [
     reviews: 17,
     strings: 6,
     price: 15300,
+    rating: 4.9,
   },
   {
     id: 7,
@@ -61,6 +67,7 @@ const products = [
     reviews: 5,
     strings: 4,
     price: 2200,
+    rating: 4.1,
   },
   {
     id: 8,
@@ -70,6 +77,7 @@ const products = [
     reviews: 27,
     strings: 4,
     price: 30000,
+    rating: 2,
   },
   {
     id: 9,
@@ -79,6 +87,7 @@ const products = [
     reviews: 3,
     strings: 7,
     price: 1700,
+    rating: 3.5,
   },
   {
     id: 10,
@@ -88,6 +97,7 @@ const products = [
     reviews: 20,
     strings: 4,
     price: 23000,
+    rating: 4.5,
   },
   {
     id: 11,
@@ -97,6 +107,7 @@ const products = [
     reviews: 19,
     strings: 4,
     price: 18700,
+    rating: 1.8,
   },
   {
     id: 12,
@@ -106,6 +117,7 @@ const products = [
     reviews: 30,
     strings: 7,
     price: 35000,
+    rating: 4,
   },
   {
     id: 13,
@@ -115,6 +127,7 @@ const products = [
     reviews: 28,
     strings: 6,
     price: 14900,
+    rating: 5,
   },
   {
     id: 14,
@@ -124,6 +137,7 @@ const products = [
     reviews: 7,
     strings: 6,
     price: 7600,
+    rating: 4.1,
   },
   {
     id: 15,
@@ -133,6 +147,7 @@ const products = [
     reviews: 19,
     strings: 6,
     price: 6500,
+    rating: 2.5,
   },
   {
     id: 16,
@@ -142,6 +157,7 @@ const products = [
     reviews: 26,
     strings: 7,
     price: 12000,
+    rating: 4.9,
   },
   {
     id: 17,
@@ -151,6 +167,7 @@ const products = [
     reviews: 31,
     strings: 7,
     price: 9900,
+    rating: 5,
   },
   {
     id: 18,
@@ -160,6 +177,7 @@ const products = [
     reviews: 28,
     strings: 12,
     price: 8900,
+    rating: 1.5,
   },
   {
     id: 19,
@@ -169,6 +187,7 @@ const products = [
     reviews: 34,
     strings: 12,
     price: 10500,
+    rating: 5,
   },
   {
     id: 20,
@@ -178,6 +197,7 @@ const products = [
     reviews: 9,
     strings: 6,
     price: 13300,
+    rating: 2.5,
   },
   {
     id: 21,
@@ -187,6 +207,7 @@ const products = [
     reviews: 37,
     strings: 4,
     price: 4800,
+    rating: 4.8,
   },
   {
     id: 22,
@@ -196,6 +217,7 @@ const products = [
     reviews: 5,
     strings: 4,
     price: 1900,
+    rating: 3.8,
   },
   {
     id: 23,
@@ -205,6 +227,7 @@ const products = [
     reviews: 23,
     strings: 4,
     price: 2500,
+    rating: 2.9,
   },
   {
     id: 25,
@@ -214,6 +237,7 @@ const products = [
     reviews: 10,
     strings: 4,
     price: 4100,
+    rating: 3.5,
   },
   {
     id: 26,
@@ -223,6 +247,7 @@ const products = [
     reviews: 14,
     strings: 4,
     price: 2700,
+    rating: 4.5,
   },
   {
     id: 27,
@@ -232,6 +257,7 @@ const products = [
     reviews: 29,
     strings: 4,
     price: 6700,
+    rating: 5,
   },
 ];
 
