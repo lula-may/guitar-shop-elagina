@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import "./style.scss";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import './style.scss';
 
 export default function Breadcrumbs({links}) {
   return (
@@ -10,7 +10,8 @@ export default function Breadcrumbs({links}) {
         <li key={id} className="breadcrumbs__item">
           {(url)
             ? <Link to={url} className="breadcrumbs__link">{text}</Link>
-            : <span>{text}</span>}</li>
+            : <span>{text}</span>}
+        </li>
       ))}
     </ul>
   );

@@ -1,5 +1,5 @@
-import React from "react";
-import "./style.scss";
+import React from 'react';
+import './style.scss';
 
 const renderModal = (type) => {
   switch (type) {
@@ -60,8 +60,8 @@ const renderModal = (type) => {
         </section>
       );
     default: return null;
-    }
-}
+  }
+};
 
 export default function Popup() {
   return (

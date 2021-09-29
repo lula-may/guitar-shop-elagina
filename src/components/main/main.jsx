@@ -1,12 +1,11 @@
-import React, {Fragment} from "react";
-import "./style.scss";
+import React, {Fragment} from 'react';
+import './style.scss';
 
-import Breadcrumbs from "../breadcrumbs/breadcrumbs";
-import Catalog from "../catalog/catalog";
-import Filter from "../filter/filter";
-import Footer from "../footer/footer";
-import Header from "../header/header";
-import Popup from "../popup/popup";
+import Breadcrumbs from '../breadcrumbs/breadcrumbs';
+import Catalog from '../catalog/catalog';
+import Filter from '../filter/filter';
+import Footer from '../footer/footer';
+import Header from '../header/header';
 
 const pages = [
   {id: 1, url: '/', text: 'Главная'},
@@ -30,7 +29,6 @@ export default function Main() {
         </div>
       </main>
       <Footer/>
-      <Popup/>
     </Fragment>
   );
 }

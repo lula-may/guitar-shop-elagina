@@ -1,8 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./style.scss";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './style.scss';
 
-import Sort from "../sort/sort";
+import Sort from '../sort/sort';
 export default function Catalog() {
   return (
     <section className="main__catalog catalog">

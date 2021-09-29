@@ -1,8 +1,8 @@
-import React from "react";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import React from 'react';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
-import Main from "../main/main";
-import Cart from "../cart/cart";
+import Main from '../main/main';
+import Cart from '../cart/cart';
 
 function App() {
   return (

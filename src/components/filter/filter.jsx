@@ -1,5 +1,5 @@
-import React from "react";
-import "./style.scss";
+import React from 'react';
+import './style.scss';
 
 export default function Filter() {
   return (
@@ -38,23 +38,23 @@ export default function Filter() {
       </div>
       <div className="filter__item">
         <h3>Количество струн</h3>
-          <ul className="checkbox-list">
-            <li className="checkbox-list__item">
-              <input className="visually-hidden" type="checkbox" name="type" id="strings-1"/>
-              <label htmlFor="strings-1">4</label>
-            </li>
-            <li className="checkbox-list__item">
-              <input className="visually-hidden" type="checkbox" name="type" id="strings-2"/>
-              <label htmlFor="strings-2">6</label>
-            </li>
-            <li className="checkbox-list__item">
-              <input className="visually-hidden" type="checkbox" name="type" id="strings-3"/>
-              <label htmlFor="strings-3">7</label>
-            </li>
-            <li className="checkbox-list__item">
-              <input className="visually-hidden" type="checkbox" name="type" id="strings-4" disabled/>
-              <label htmlFor="strings-4">12</label>
-            </li>
+        <ul className="checkbox-list">
+          <li className="checkbox-list__item">
+            <input className="visually-hidden" type="checkbox" name="type" id="strings-1"/>
+            <label htmlFor="strings-1">4</label>
+          </li>
+          <li className="checkbox-list__item">
+            <input className="visually-hidden" type="checkbox" name="type" id="strings-2"/>
+            <label htmlFor="strings-2">6</label>
+          </li>
+          <li className="checkbox-list__item">
+            <input className="visually-hidden" type="checkbox" name="type" id="strings-3"/>
+            <label htmlFor="strings-3">7</label>
+          </li>
+          <li className="checkbox-list__item">
+            <input className="visually-hidden" type="checkbox" name="type" id="strings-4" disabled/>
+            <label htmlFor="strings-4">12</label>
+          </li>
         </ul>
       </div>
       <button className="filter__button button button--plain">Показать</button>

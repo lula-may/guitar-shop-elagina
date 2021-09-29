@@ -1,5 +1,5 @@
-import React from "react";
-import "./style.scss";
+import React from 'react';
+import './style.scss';
 
 export default function Sort() {
   return (
@@ -12,12 +12,12 @@ export default function Sort() {
         </div>
         <div className="sort__directions">
           <button id="sort-up" className="sort__button sort__button--active" aria-label="По возрастанию">
-            <svg class="sort__icon" width="14" height="11">
+            <svg className="sort__icon" width="14" height="11">
               <use xlinkHref="#sort-up"></use>
             </svg>
           </button>
           <button id="sort-down" className="sort__button" aria-label="По убыванию">
-            <svg class="sort__icon" width="14" height="11">
+            <svg className="sort__icon" width="14" height="11">
               <use xlinkHref="#sort-down"></use>
             </svg>
           </button>

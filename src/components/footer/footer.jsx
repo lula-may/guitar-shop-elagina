@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./style.scss";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './style.scss';
 
 export default function Footer() {
   return (
@@ -61,4 +61,4 @@ export default function Footer() {
       </div>
     </footer>
   );
-};
+}
