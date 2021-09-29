@@ -11,3 +11,13 @@ export const GuitarOption = {
   electro: {type: 'электрогитара', url: 'img/electro.png', preview: 'img/electro-small.png'},
   ukulele: {type: 'укулеле', url: 'img/ukulele.png', preview: 'img/ukulele-small.png'},
 };
+
+export const SortType = {
+  PRICE: 'price',
+  REVIEWS: 'reviews',
+};
+
+export const SortDirection = {
+  DOWN: 'down',
+  UP: 'up',
+};
