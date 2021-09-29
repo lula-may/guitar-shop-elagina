@@ -230,6 +230,16 @@ const products = [
     rating: 2.9,
   },
   {
+    id: 24,
+    article: 'DI934754',
+    name: 'Dania WR',
+    type:	'ukulele',
+    reviews: 3,
+    strings: 4,
+    price: 3800,
+    rating: 1,
+  },
+  {
     id: 25,
     article: 'DI034292',
     name: 'Dania LE',
