@@ -1,9 +1,10 @@
 import { NameSpace } from '../root-reducer';
 import { createSelector } from 'reselect';
 import { PRODUCTS_PER_PAGE } from '../../const';
-import { sortProductsByFeature } from '../../utils';
+import { filterProductsByPrice, sortProductsByFeature } from '../../utils';
 
-const filterProductsByPrice = (items, min=0, max=1000000) => items.filter(({price}) => (price >= min) && (price <= max));
+export const filterProductsByTypes = (products, types) => products.filter(({type}) => types.includes(type));
+export const filterProductsByStrings = (products, counts) => products.filter(({strings}) => counts.includes(strings));
 
 export const getProductsAll = (state) => state[NameSpace.CATALOG].products;
 
@@ -11,6 +12,9 @@ export const getCurrentPage = (state) => state[NameSpace.CATALOG].currentPage;
 
 export const getFilterMaxPrice = (state) => state[NameSpace.CATALOG].maxPrice;
 export const getFilterMinPrice = (state) => state[NameSpace.CATALOG].minPrice;
+
+export const getTypeFilters = (state) => state[NameSpace.CATALOG].typeFilters;
+export const getStringsFilters = (state) => state[NameSpace.CATALOG].stringsFilters;
 
 export const getSortDirection = (state) => state[NameSpace.CATALOG].sortDirection;
 
@@ -44,8 +48,30 @@ const selectProductsByPrice = createSelector(
   },
 );
 
-export const selectSortedProducts = createSelector(
+const selectProductsByType = createSelector(
   selectProductsByPrice,
+  getTypeFilters,
+  (products, types) => {
+    if (types.length) {
+      return filterProductsByTypes(products, types);
+    }
+    return products;
+  },
+);
+
+export const selectProductsByAllFilters = createSelector(
+  selectProductsByType,
+  getStringsFilters,
+  (products, stringsCounts) => {
+    if (stringsCounts.length) {
+      return filterProductsByStrings(products, stringsCounts);
+    }
+    return products;
+  },
+);
+
+export const selectSortedProducts = createSelector(
+  selectProductsByAllFilters,
   getSortType,
   getSortDirection,
   (products, sort, direction) => sortProductsByFeature(products, sort, direction),
@@ -60,7 +86,8 @@ export const selectProductsByPage = createSelector(
     return products.slice(start, end);
   },
 );
+
 export const selectLastPage = createSelector(
-  selectProductsByPrice,
+  selectProductsByAllFilters,
   (products) => Math.ceil(products.length / PRODUCTS_PER_PAGE),
 );

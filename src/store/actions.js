@@ -10,8 +10,11 @@ export const ActionType = {
   SET_PRODUCTS: 'CATALOG/SET_PRODUCTS',
   SET_SORT_DIRECTION: 'CATALOG/SET_SORT_DIRECTION',
   SET_SORT_TYPE: 'CATALOG/SET_SORT_TYPE',
-  SET_STRINGS_FILTER: 'CATALOG/SET_STRINGS_FILTER',
-  SET_TYPE_FILTER: 'CATALOG/SET_TYPE_FILTER',
+  ADD_STRINGS_FILTER: 'CATALOG/ADD_STRINGS_FILTER',
+  ADD_TYPE_FILTER: 'CATALOG/SET_TYPE_FILTER',
+  DELETE_TYPE_FILTER: 'CATALOG/DELETE_TYPE_FILTER',
+  DELETE_STRINGS_FILTER: 'CATALOG/DELETE_STRINGS_FILTER',
+  UPDATE_STRINGS_FILTER: 'CATALOG/UPDATE_STRINGS_FILTER',
   SET_POPUP: 'PAGE/SET_POPUP',
   DELETE_POPUP: 'PAGE/DELETE_POPUP',
 };
@@ -40,6 +43,26 @@ export const setSortDirection = createAction(ActionType.SET_SORT_DIRECTION, (dir
 
 export const setSortType = createAction(ActionType.SET_SORT_TYPE, (type) => ({
   payload: type,
+}));
+
+export const addTypeFilter = createAction(ActionType.ADD_TYPE_FILTER, (type) => ({
+  payload: type,
+}));
+
+export const deleteTypeFilter = createAction(ActionType.DELETE_TYPE_FILTER, (type) => ({
+  payload: type,
+}));
+
+export const addStringsFilter = createAction(ActionType.ADD_STRINGS_FILTER, (count) => ({
+  payload: count,
+}));
+
+export const deleteStringsFilter = createAction(ActionType.DELETE_STRINGS_FILTER, (count) => ({
+  payload: count,
+}));
+
+export const updateStringsFilter = createAction(ActionType.UPDATE_STRINGS_FILTER, (counts) => ({
+  payload: counts,
 }));
 
 export const setPopup = createAction(ActionType.SET_POPUP, (type) => ({

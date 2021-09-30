@@ -1,3 +1,5 @@
+export const filterProductsByPrice = (items, min=0, max=1000000) => items.filter(({price}) => (price >= min) && (price <= max));
+
 export const getClassName = (...args) => args.filter(Boolean).join(' ');
 
 export const getPagesList = (current, last) => {
