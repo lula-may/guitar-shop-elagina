@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { SortDirection, SortType } from '../../const';
-import { setCatalogPage, setSortDirection, setSortType } from '../../store/actions';
+import { resetCatalogPage, setSortDirection, setSortType } from '../../store/actions';
 import { getSortDirection, getSortType } from '../../store/catalog/selectors';
 import { getClassName } from '../../utils';
 import './style.scss';
@@ -34,7 +34,7 @@ export default function Sort() {
     evt.preventDefault();
     if (evt.target.id !== currentSort) {
       dispatch(setSortType(evt.target.id));
-      dispatch(setCatalogPage(1));
+      dispatch(resetCatalogPage());
       if (!currentDirection) {
         dispatch(setSortDirection(SortDirection.UP));
       }
@@ -45,7 +45,7 @@ export default function Sort() {
     evt.preventDefault();
     if (evt.currentTarget.id !== currentDirection) {
       dispatch(setSortDirection(evt.currentTarget.id));
-      dispatch(setCatalogPage(1));
+      dispatch(resetCatalogPage());
       if (!currentSort) {
         dispatch(setSortType(SortType.PRICE));
       }

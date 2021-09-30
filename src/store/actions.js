@@ -3,8 +3,10 @@ import { createAction } from '@reduxjs/toolkit';
 export const ActionType = {
   ADD_PRODUCT: 'CART/ADD_PRODUCT',
   DELETE_PRODUCT: 'CART/DELETE_PRODUCT',
+  RESET_CATALOG_PAGE: 'CATALOG/RESET_CATALOG_PAGE',
   SET_CATALOG_PAGE: 'CATALOG/SET_CURRENT_PAGE',
-  SET_PRICE_FILTER: 'CATALOG/SET_PRICE_FILTER',
+  SET_MAX_PRICE: 'CATALOG/SET_MAX_PRICE',
+  SET_MIN_PRICE: 'CATALOG/SET_MIN_PRICE',
   SET_PRODUCTS: 'CATALOG/SET_PRODUCTS',
   SET_SORT_DIRECTION: 'CATALOG/SET_SORT_DIRECTION',
   SET_SORT_TYPE: 'CATALOG/SET_SORT_TYPE',
@@ -18,8 +20,18 @@ export const setProducts = createAction(ActionType.SET_PRODUCTS, (products) => (
   payload: products,
 }));
 
+export const resetCatalogPage = createAction(ActionType.RESET_CATALOG_PAGE);
+
 export const setCatalogPage = createAction(ActionType.SET_CATALOG_PAGE, (pageCount) => ({
   payload: pageCount,
+}));
+
+export const setMaxPrice = createAction(ActionType.SET_MAX_PRICE, (price) => ({
+  payload: price,
+}));
+
+export const setMinPrice = createAction(ActionType.SET_MIN_PRICE, (price) => ({
+  payload: price,
 }));
 
 export const setSortDirection = createAction(ActionType.SET_SORT_DIRECTION, (direction) => ({
