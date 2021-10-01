@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useCallback, useState} from 'react';
 import './style.scss';
 
 import Breadcrumbs from '../breadcrumbs/breadcrumbs';
@@ -6,6 +6,8 @@ import Catalog from '../catalog/catalog';
 import Filter from '../filter/filter';
 import Footer from '../footer/footer';
 import Header from '../header/header';
+import Popup from '../popup/popup';
+import { PopupType } from '../../const';
 
 const pages = [
   {id: 1, url: '/', text: 'Главная'},
@@ -13,6 +15,19 @@ const pages = [
 ];
 
 export default function Main() {
+  const [popupType, setPopupType] = useState(null);
+  const [popupProduct, setPopupProduct] = useState(null);
+
+  const onCartButtonClick = useCallback((product) => {
+    setPopupType(PopupType.ADD);
+    setPopupProduct(product);
+  }, []);
+
+  const onPopupClose = useCallback(() => {
+    setPopupType(null);
+    setPopupProduct(null);
+  }, []);
+
   return (
     <Fragment>
       <Header/>
@@ -24,11 +39,17 @@ export default function Main() {
           </div>
           <div className="main__container">
             <Filter/>
-            <Catalog/>
+            <Catalog onCartButtonClick={onCartButtonClick} />
           </div>
         </div>
       </main>
       <Footer/>
+      {popupType &&
+        <Popup
+          type={popupType}
+          onPopupClose={onPopupClose}
+          product={popupProduct}
+        />}
     </Fragment>
   );
 }

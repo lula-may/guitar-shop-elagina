@@ -1,11 +1,4 @@
-export const PRODUCTS_PER_PAGE = 9;
-export const STRING_COUNTS = [4, 6, 7, 12];
-
-export const GuitarType = {
-  ACOUSTIC: 'acoustic',
-  ELECTRO: 'electro',
-  UKULELE: 'ukulele',
-};
+export const ESC_KEY = 'Escape';
 
 export const GuitarOption = {
   acoustic: {
@@ -28,6 +21,20 @@ export const GuitarOption = {
   },
 };
 
+export const GuitarType = {
+  ACOUSTIC: 'acoustic',
+  ELECTRO: 'electro',
+  UKULELE: 'ukulele',
+};
+
+export const PopupType = {
+  ADD: 'add',
+  DELETE: 'delete',
+  SUCCESS: 'success',
+};
+
+export const PRODUCTS_PER_PAGE = 9;
+
 export const SortType = {
   PRICE: 'price',
   REVIEWS: 'reviews',
@@ -37,3 +44,5 @@ export const SortDirection = {
   DOWN: 'down',
   UP: 'up',
 };
+
+export const STRING_COUNTS = [4, 6, 7, 12];

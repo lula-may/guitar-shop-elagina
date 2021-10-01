@@ -1,5 +1,6 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import './style.scss';
 import { PRODUCT } from '../props';
@@ -7,7 +8,7 @@ import { GuitarOption } from '../../const';
 
 const getRatingWidth = (rating) => `${Math.round(rating * 20)}%`;
 
-export default function ProductCard({product}) {
+export default function ProductCard({product, onCartButtonClick}) {
   const {
     name,
     rating,
@@ -18,6 +19,7 @@ export default function ProductCard({product}) {
 
   const {url} = GuitarOption[type];
   const ratingStyle = useMemo(() => ({width: getRatingWidth(rating)}), [rating]);
+  const handleCartButtonClick = useCallback(() => onCartButtonClick(product), [onCartButtonClick, product]);
 
   return (
     <article className="card">
@@ -35,12 +37,18 @@ export default function ProductCard({product}) {
       </dl>
       <div className="card__footer">
         <Link className="card__button button button--plain" to="#">Подробнее</Link>
-        <button className="card__button card__button--cart button button--bright" type="button">Купить</button>
+        <button
+          className="card__button card__button--cart button button--bright"
+          type="button"
+          onClick={handleCartButtonClick}
+        >Купить
+        </button>
       </div>
     </article>
   );
 }
 
 ProductCard.propTypes = {
+  onCartButtonClick: PropTypes.func.isRequired,
   product: PRODUCT.isRequired,
 };

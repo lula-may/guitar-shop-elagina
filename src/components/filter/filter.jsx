@@ -108,7 +108,6 @@ export default function Filter() {
             })}
           </ul>
         </div>
-        <button className="filter__button button button--plain" type="submit">Показать</button>
       </form>
     </section>
   );

@@ -1,5 +1,9 @@
 export const filterProductsByPrice = (items, min=0, max=1000000) => items.filter(({price}) => (price >= min) && (price <= max));
 
+export const getBodyScrollTop = () => window.pageYOffset || (document.documentElement && document.documentElement.ScrollTop) || (document.body && document.body.scrollTop);
+
+export const isVerticalScroll = () =>  document.body.offsetHeight > window.innerHeight;
+
 export const getClassName = (...args) => args.filter(Boolean).join(' ');
 
 export const getPagesList = (current, last) => {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import './style.scss';
 
@@ -8,7 +9,7 @@ import ProductCard from '../product-card/product-card';
 import Sort from '../sort/sort';
 import { selectProductsByPage } from '../../store/catalog/selectors';
 
-export default function Catalog() {
+export default function Catalog({onCartButtonClick}) {
   const products = useSelector(selectProductsByPage);
   return (
     <section className="main__catalog catalog">
@@ -17,7 +18,10 @@ export default function Catalog() {
       <ul className="catalog__list">
         {products.map((product) => (
           <li key={product.id} className="catalog__item">
-            <ProductCard product={product} />
+            <ProductCard
+              product={product}
+              onCartButtonClick={onCartButtonClick}
+            />
           </li>
         ))}
       </ul>
@@ -27,4 +31,8 @@ export default function Catalog() {
     </section>
   );
 }
+
+Catalog.propTypes = {
+  onCartButtonClick: PropTypes.func.isRequired,
+};
 

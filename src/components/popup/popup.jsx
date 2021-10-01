@@ -1,72 +1,79 @@
-import React from 'react';
+import React, {useCallback, useEffect} from 'react';
+import PropTypes from 'prop-types';
 import './style.scss';
 
-const renderModal = (type) => {
-  switch (type) {
-    case 'add':
-      return (
-        <section className="modal modal--add">
-          <h2>Добавить товар в корзину</h2>
-          <div className="modal__wrapper modal__wrapper--product">
-            <div className="product-info">
-              <div className="product-info__image">
-                <img src="img/ukulele-small.png" width="48" height="124" alt="Фото гитары " />
-              </div>
-              <div className="product-info__description">
-                <h3>Гитара Честер bass</h3>
-                <p>Артикул: SO757575</p>
-                <p>Электрогитара, 6 струнная</p>
-                <b>Цена: 17 500 ₽</b>
-              </div>
-            </div>
-            <button className="modal__button button button--bright" type="button">Добавить в корзину</button>
-          </div>
-          <button className="modal__close" type="button" aria-label="Закрыть"></button>
-        </section>
-      );
-    case 'delete':
-      return (
-        <section className="modal modal--delete">
-          <h2>Удалить этот товар?</h2>
-          <div className="modal__wrapper modal__wrapper--product">
-            <div className="product-info">
-              <div className="product-info__image">
-                <img src="img/electro.png" width="48" height="124" alt="Фото гитары " />
-              </div>
-              <div className="product-info__description">
-                <h3>Гитара Честер bass</h3>
-                <p>Артикул: SO757575</p>
-                <p>Электрогитара, 6 струнная</p>
-                <b>Цена: 17 500 ₽</b>
-              </div>
-            </div>
-            <div className="modal__column">
-              <button className="modal__button button button--bright" type="button">Удалить товар</button>
-              <button className="modal__button button button--transparent" type="button">Продолжить покупки</button>
-            </div>
-          </div>
-          <button className="modal__close" type="button" aria-label="Закрыть"></button>
-        </section>
-      );
-    case 'success':
-      return (
-        <section className="modal modal--success">
-          <h2>Товар успешно добавлен в корзину</h2>
-          <div className="modal__wrapper modal__wrapper--success">
-            <button className="modal__button button button--bright" type="button">Перейти в корзину</button>
-            <button className="modal__button button button--transparent" type="button">Продолжить покупки</button>
-          </div>
-          <button className="modal__close" type="button" aria-label="Закрыть"></button>
-        </section>
-      );
-    default: return null;
-  }
-};
+import ModalAdd from '../modal-add/modal-add';
+import ModalDelete from '../modal-delete/modal-delete';
+import ModalSuccess from '../modal-success/modal-success';
+import { PRODUCT } from '../props';
+import { ESC_KEY, PopupType } from '../../const';
+import {getBodyScrollTop, isVerticalScroll } from '../../utils';
 
-export default function Popup() {
+const OVERLAY_CLASS = 'overlay';
+export default function Popup({onPopupClose, product, type}) {
+  const pageTopPosition = getBodyScrollTop();
+  const pageLeftPosition = document.body.offsetLeft;
+
+  const handleEscKeyDown = useCallback((evt) => {
+    if (evt.key === ESC_KEY) {
+      onPopupClose();
+    }
+  }, [onPopupClose]);
+
+  const handleOverlayClick = useCallback((evt) => {
+    if (evt.target.className === OVERLAY_CLASS) {
+      onPopupClose();
+    }
+  }, [onPopupClose]);
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleEscKeyDown);
+    return () => document.removeEventListener('keydown', handleEscKeyDown);
+  }, [handleEscKeyDown]);
+
+  useEffect(() => {
+    if (isVerticalScroll()) {
+      document.body.style.top = `-${pageTopPosition}px`;
+      document.body.classList.add('page--lock');
+    }
+
+    return () => {
+      if (isVerticalScroll()) {
+        document.body.classList.remove('page--lock');
+        document.body.style = void 0;
+        window.scrollTo(0, pageTopPosition);
+      }
+    };
+  }, [pageLeftPosition, pageTopPosition]);
+
+
+  const renderModal = () => {
+    switch (type) {
+      case PopupType.ADD:
+        return (
+          <ModalAdd product={product} onPopupClose={onPopupClose} />
+        );
+      case PopupType.DELETE:
+        return (
+          <ModalDelete product={product} onPopupClose={onPopupClose} />
+        );
+      case PopupType.SUCCESS:
+        return (
+          <ModalSuccess onPopupClose={onPopupClose} />
+        );
+      default: return null;
+    }
+  };
+
   return (
-    <div className="overlay">
-      {renderModal('delete')}
+    <div className={OVERLAY_CLASS} onClick={handleOverlayClick}>
+      {renderModal()}
     </div>
   );
 }
+
+Popup.propTypes = {
+  onPopupClose: PropTypes.func.isRequired,
+  product: PRODUCT,
+  type: PropTypes.string.isRequired,
+};
