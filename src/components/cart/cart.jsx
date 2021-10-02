@@ -10,7 +10,7 @@ import Product from '../product/product';
 import Promocode from '../promocode/promocode';
 
 import { useSelector } from 'react-redux';
-import { getCartList } from '../../store/cart/selectors';
+import { getCartList, selectCartTotalPrice } from '../../store/cart/selectors';
 import { useDispatch } from 'react-redux';
 import { deletePopup, setPopup, setPopupProduct } from '../../store/actions';
 import { getPopup } from '../../store/page/selectors';
@@ -25,6 +25,7 @@ const pages = [
 
 export default function Cart() {
   const products = useSelector(getCartList);
+  const totalPrice = useSelector(selectCartTotalPrice);
   const popup = useSelector(getPopup);
   const dispatch = useDispatch();
 
@@ -50,18 +51,19 @@ export default function Cart() {
           </div>
           <div className="cart">
             <div className="cart__list">
-              {products.map((product) => (
+              {products.map(({product, counter}) => (
                 <Product
                   key={product.id}
                   onDeleteButtonClick={onDeleteButtonClick}
                   product={product}
+                  counter={counter}
                 />))}
             </div>
             <footer className="cart__footer">
               <div className="cart__container">
                 <Promocode/>
                 <div className="cart__total">
-                  <h2>Всего: 47 000 ₽ </h2>
+                  <h2>Всего: {totalPrice.toLocaleString('ru-RU')} ₽ </h2>
                   <Link className="cart__button button button--bright" to="">Оформить заказ</Link>
                 </div>
               </div>

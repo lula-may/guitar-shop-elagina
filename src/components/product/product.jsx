@@ -1,16 +1,36 @@
 import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import './style.scss';
 
 import { PRODUCT } from '../props';
-import { GuitarOption } from '../../const';
+import { GuitarOption, PopupType } from '../../const';
+import { setPopup, setPopupProduct, updateCartProduct } from '../../store/actions';
 
-export default function Product({onDeleteButtonClick, product}) {
-  const {article, name, type, strings, price} = product;
+export default function Product({counter, product}) {
+  const {article, id, name, type, strings, price} = product;
   const {preview, type: text} = GuitarOption[type];
-  const totalPrice = price;
+  const totalPrice = price * counter;
+  const dispatch = useDispatch();
 
-  const handleDeleteButtonClick = useCallback(() => onDeleteButtonClick(product), [onDeleteButtonClick, product]);
+  const openPopup = useCallback(() => {
+    dispatch(setPopup(PopupType.DELETE));
+    dispatch(setPopupProduct(product));
+  }, [dispatch, product]);
+
+  const handlePlusButtonClick = useCallback(() => {
+    dispatch(updateCartProduct({product, counter: counter + 1}));
+  }, [counter, dispatch, product]);
+
+  const handleMinusButtonClick = useCallback(() => {
+    if (counter > 1) {
+      dispatch(updateCartProduct({product, counter: counter - 1}));
+    } else {
+      openPopup();
+    }
+  }, [counter, dispatch, openPopup, product]);
+
+  const handleDeleteButtonClick = useCallback(() => openPopup(), [openPopup]);
 
   return (
     <div className="product">
@@ -32,9 +52,25 @@ export default function Product({onDeleteButtonClick, product}) {
       <div className="product__numbers">
         <span className="product__price">{price.toLocaleString('ru-RU')} ₽</span>
         <div className="product__counter">
-          <button className="product__control product__control--minus" id="minus-1" type="button" aria-label="Уменьшить"/>
-          <input type="text" name="counter-1" id="counter-1" value="1" onChange={() => {}}/>
-          <button className="product__control product__control--plus" type="button" aria-label="Увеличить" id="plus-1"/>
+          <button
+            className="product__control product__control--minus"
+            onClick={handleMinusButtonClick}
+            type="button"
+            aria-label="Уменьшить"
+          />
+          <input
+            type="text"
+            name={`counter-${id}`}
+            id={`counter-${id}`}
+            value={counter}
+            readOnly
+          />
+          <button
+            className="product__control product__control--plus"
+            onClick={handlePlusButtonClick}
+            type="button"
+            aria-label="Увеличить"
+          />
         </div>
         <div className="product__total">{totalPrice.toLocaleString('ru-RU')} ₽</div>
       </div>
@@ -43,6 +79,6 @@ export default function Product({onDeleteButtonClick, product}) {
 }
 
 Product.propTypes = {
-  onDeleteButtonClick: PropTypes.func.isRequired,
+  counter: PropTypes.number.isRequired,
   product: PRODUCT.isRequired,
 };
