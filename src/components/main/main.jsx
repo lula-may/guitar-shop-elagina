@@ -1,4 +1,4 @@
-import React, {Fragment, useCallback, useState} from 'react';
+import React, {Fragment, useCallback} from 'react';
 import { useDispatch } from 'react-redux';
 import './style.scss';
 
@@ -8,8 +8,10 @@ import Filter from '../filter/filter';
 import Footer from '../footer/footer';
 import Header from '../header/header';
 import Popup from '../popup/popup';
-import { addProduct, deleteProduct } from '../../store/actions';
+import { setPopup, setPopupProduct } from '../../store/actions';
 import { PopupType } from '../../const';
+import { useSelector } from 'react-redux';
+import { getPopup } from '../../store/page/selectors';
 
 const pages = [
   {id: 1, url: '/', text: 'Главная'},
@@ -17,30 +19,13 @@ const pages = [
 ];
 
 export default function Main() {
-  const [popupType, setPopupType] = useState(null);
-  const [popupProduct, setPopupProduct] = useState(null);
+  const popup = useSelector(getPopup);
   const dispatch = useDispatch();
 
   const onCartButtonClick = useCallback((product) => {
-    setPopupType(PopupType.ADD);
-    setPopupProduct(product);
-  }, []);
-
-  const onPopupClose = useCallback(() => {
-    setPopupType(null);
-    setPopupProduct(null);
-  }, []);
-
-  const onAddToCartClick = useCallback(() => {
-    dispatch(addProduct(popupProduct));
-    setPopupType(PopupType.SUCCESS);
-    setPopupProduct(null);
-  }, [dispatch, popupProduct]);
-
-  const onDeleteFromCartClick = useCallback(() => {
-    dispatch(deleteProduct(popupProduct));
-    onPopupClose();
-  }, [dispatch, onPopupClose, popupProduct]);
+    dispatch(setPopup(PopupType.ADD));
+    dispatch(setPopupProduct(product));
+  }, [dispatch]);
 
   return (
     <Fragment>
@@ -58,14 +43,7 @@ export default function Main() {
         </div>
       </main>
       <Footer/>
-      {popupType &&
-        <Popup
-          onAddToCartClick={onAddToCartClick}
-          onDeleteFromCartClick={onDeleteFromCartClick}
-          onPopupClose={onPopupClose}
-          product={popupProduct}
-          type={popupType}
-        />}
+      {popup && <Popup/>}
     </Fragment>
   );
 }

@@ -15,8 +15,9 @@ export const ActionType = {
   DELETE_TYPE_FILTER: 'CATALOG/DELETE_TYPE_FILTER',
   DELETE_STRINGS_FILTER: 'CATALOG/DELETE_STRINGS_FILTER',
   UPDATE_STRINGS_FILTER: 'CATALOG/UPDATE_STRINGS_FILTER',
-  SET_POPUP: 'PAGE/SET_POPUP',
   DELETE_POPUP: 'PAGE/DELETE_POPUP',
+  SET_POPUP: 'PAGE/SET_POPUP',
+  SET_POPUP_PRODUCT: 'PAGE/SET_POPUP_PRODUCT',
 };
 
 export const addProduct = createAction(ActionType.ADD_PRODUCT, (product) => ({
@@ -73,8 +74,13 @@ export const updateStringsFilter = createAction(ActionType.UPDATE_STRINGS_FILTER
   payload: counts,
 }));
 
+export const deletePopup = createAction(ActionType.DELETE_POPUP);
+
 export const setPopup = createAction(ActionType.SET_POPUP, (type) => ({
   payload: type,
 }));
 
-export const deletePopup = createAction(ActionType.DELETE_POPUP);
+export const setPopupProduct = createAction(ActionType.SET_POPUP_PRODUCT, (product) => ({
+  payload: product,
+}));
+

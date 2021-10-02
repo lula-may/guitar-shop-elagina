@@ -1,39 +1,54 @@
-import React, {useCallback, useEffect} from 'react';
-import PropTypes from 'prop-types';
+import React, {useCallback, useEffect, useState} from 'react';
 import './style.scss';
 
 import ModalAdd from '../modal-add/modal-add';
 import ModalDelete from '../modal-delete/modal-delete';
 import ModalSuccess from '../modal-success/modal-success';
-import { PRODUCT } from '../props';
 import { ESC_KEY, PopupType } from '../../const';
 import {getBodyScrollTop, isVerticalScroll } from '../../utils';
+import { useSelector } from 'react-redux';
+import { getCurrentProduct, getPopup } from '../../store/page/selectors';
+import { useDispatch } from 'react-redux';
+import { addProduct, deletePopup, deleteProduct, setPopup } from '../../store/actions';
 
 const OVERLAY_CLASS = 'overlay';
 
-export default function Popup(props) {
-  const {
-    onAddToCartClick,
-    onDeleteFromCartClick,
-    onPopupClose,
-    product,
-    type,
-  } = props;
+export default function Popup() {
+  const type = useSelector(getPopup);
+  const product = useSelector(getCurrentProduct);
+  const dispatch = useDispatch();
 
-  const pageTopPosition = getBodyScrollTop();
-  const pageLeftPosition = document.body.offsetLeft;
+  const [pageTopPosition, setYPosition] = useState(getBodyScrollTop());
+  const [pageLeftPosition, setXPosition] = useState(document.body.offsetLeft);
+
+  const closePopup = useCallback(() => {
+    dispatch(deletePopup());
+  }, [dispatch]);
+
+  const onAddToCartClick = useCallback(() => {
+    dispatch(addProduct(product));
+    dispatch(deletePopup());
+    dispatch(setPopup(PopupType.SUCCESS));
+  }, [dispatch, product]);
+
+  const onDeleteFromCartClick = useCallback(() => {
+    dispatch(deleteProduct(product));
+    dispatch(deletePopup());
+  }, [dispatch, product]);
+
+  const onCloseButtonClick = useCallback(() => closePopup(), [closePopup]);
 
   const handleEscKeyDown = useCallback((evt) => {
     if (evt.key === ESC_KEY) {
-      onPopupClose();
+      closePopup();
     }
-  }, [onPopupClose]);
+  }, [closePopup]);
 
   const handleOverlayClick = useCallback((evt) => {
     if (evt.target.className === OVERLAY_CLASS) {
-      onPopupClose();
+      closePopup();
     }
-  }, [onPopupClose]);
+  }, [closePopup]);
 
   useEffect(() => {
     document.addEventListener('keydown', handleEscKeyDown);
@@ -51,6 +66,8 @@ export default function Popup(props) {
         document.body.classList.remove('page--lock');
         document.body.style = void 0;
         window.scrollTo(0, pageTopPosition);
+        setXPosition(0);
+        setYPosition(0);
       }
     };
   }, [pageLeftPosition, pageTopPosition]);
@@ -63,7 +80,7 @@ export default function Popup(props) {
           <ModalAdd
             product={product}
             onAddToCartClick={onAddToCartClick}
-            onPopupClose={onPopupClose}
+            onPopupClose={onCloseButtonClick}
           />
         );
       case PopupType.DELETE:
@@ -71,12 +88,12 @@ export default function Popup(props) {
           <ModalDelete
             product={product}
             onDeleteFromCartClick={onDeleteFromCartClick}
-            onPopupClose={onPopupClose}
+            onPopupClose={onCloseButtonClick}
           />
         );
       case PopupType.SUCCESS:
         return (
-          <ModalSuccess onPopupClose={onPopupClose} />
+          <ModalSuccess onPopupClose={onCloseButtonClick} />
         );
       default: return null;
     }
@@ -88,11 +105,3 @@ export default function Popup(props) {
     </div>
   );
 }
-
-Popup.propTypes = {
-  onAddToCartClick: PropTypes.func.isRequired,
-  onDeleteFromCartClick: PropTypes.func.isRequired,
-  onPopupClose: PropTypes.func.isRequired,
-  product: PRODUCT,
-  type: PropTypes.string.isRequired,
-};
