@@ -10,7 +10,16 @@ import { ESC_KEY, PopupType } from '../../const';
 import {getBodyScrollTop, isVerticalScroll } from '../../utils';
 
 const OVERLAY_CLASS = 'overlay';
-export default function Popup({onPopupClose, product, type}) {
+
+export default function Popup(props) {
+  const {
+    onAddToCartClick,
+    onDeleteFromCartClick,
+    onPopupClose,
+    product,
+    type,
+  } = props;
+
   const pageTopPosition = getBodyScrollTop();
   const pageLeftPosition = document.body.offsetLeft;
 
@@ -51,11 +60,19 @@ export default function Popup({onPopupClose, product, type}) {
     switch (type) {
       case PopupType.ADD:
         return (
-          <ModalAdd product={product} onPopupClose={onPopupClose} />
+          <ModalAdd
+            product={product}
+            onAddToCartClick={onAddToCartClick}
+            onPopupClose={onPopupClose}
+          />
         );
       case PopupType.DELETE:
         return (
-          <ModalDelete product={product} onPopupClose={onPopupClose} />
+          <ModalDelete
+            product={product}
+            onDeleteFromCartClick={onDeleteFromCartClick}
+            onPopupClose={onPopupClose}
+          />
         );
       case PopupType.SUCCESS:
         return (
@@ -73,6 +90,8 @@ export default function Popup({onPopupClose, product, type}) {
 }
 
 Popup.propTypes = {
+  onAddToCartClick: PropTypes.func.isRequired,
+  onDeleteFromCartClick: PropTypes.func.isRequired,
   onPopupClose: PropTypes.func.isRequired,
   product: PRODUCT,
   type: PropTypes.string.isRequired,

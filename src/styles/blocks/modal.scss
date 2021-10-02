@@ -80,6 +80,7 @@
   margin-top: 14px;
 
   @include big-button-font();
+  text-decoration: none;
 }
 
 @media (max-width: $tablet-width) {

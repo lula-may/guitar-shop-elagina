@@ -1,4 +1,5 @@
 import React, {Fragment, useCallback, useState} from 'react';
+import { useDispatch } from 'react-redux';
 import './style.scss';
 
 import Breadcrumbs from '../breadcrumbs/breadcrumbs';
@@ -7,6 +8,7 @@ import Filter from '../filter/filter';
 import Footer from '../footer/footer';
 import Header from '../header/header';
 import Popup from '../popup/popup';
+import { addProduct, deleteProduct } from '../../store/actions';
 import { PopupType } from '../../const';
 
 const pages = [
@@ -17,6 +19,7 @@ const pages = [
 export default function Main() {
   const [popupType, setPopupType] = useState(null);
   const [popupProduct, setPopupProduct] = useState(null);
+  const dispatch = useDispatch();
 
   const onCartButtonClick = useCallback((product) => {
     setPopupType(PopupType.ADD);
@@ -27,6 +30,17 @@ export default function Main() {
     setPopupType(null);
     setPopupProduct(null);
   }, []);
+
+  const onAddToCartClick = useCallback(() => {
+    dispatch(addProduct(popupProduct));
+    setPopupType(PopupType.SUCCESS);
+    setPopupProduct(null);
+  }, [dispatch, popupProduct]);
+
+  const onDeleteFromCartClick = useCallback(() => {
+    dispatch(deleteProduct(popupProduct));
+    onPopupClose();
+  }, [dispatch, onPopupClose, popupProduct]);
 
   return (
     <Fragment>
@@ -46,9 +60,11 @@ export default function Main() {
       <Footer/>
       {popupType &&
         <Popup
-          type={popupType}
+          onAddToCartClick={onAddToCartClick}
+          onDeleteFromCartClick={onDeleteFromCartClick}
           onPopupClose={onPopupClose}
           product={popupProduct}
+          type={popupType}
         />}
     </Fragment>
   );

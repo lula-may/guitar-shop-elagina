@@ -5,13 +5,18 @@ import './style.scss';
 import ProductInfo from '../product-info/product-info';
 import {PRODUCT} from '../props';
 
-export default function ModalAdd({onPopupClose, product}) {
+export default function ModalAdd({onAddToCartClick, onPopupClose, product}) {
   return (
     <section className="modal modal--add">
       <h2>Добавить товар в корзину</h2>
       <div className="modal__wrapper modal__wrapper--product">
         <ProductInfo product={product}/>
-        <button className="modal__button button button--bright" type="button">Добавить в корзину</button>
+        <button
+          className="modal__button button button--bright"
+          onClick={onAddToCartClick}
+          type="button"
+        >Добавить в корзину
+        </button>
       </div>
       <button
         className="modal__close"
@@ -25,6 +30,7 @@ export default function ModalAdd({onPopupClose, product}) {
 
 
 ModalAdd.propTypes = {
+  onAddToCartClick: PropTypes.func.isRequired,
   onPopupClose: PropTypes.func.isRequired,
   product: PRODUCT.isRequired,
 };
