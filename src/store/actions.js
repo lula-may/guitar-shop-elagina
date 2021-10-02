@@ -19,6 +19,14 @@ export const ActionType = {
   DELETE_POPUP: 'PAGE/DELETE_POPUP',
 };
 
+export const addProduct = createAction(ActionType.ADD_PRODUCT, (product) => ({
+  payload: product,
+}));
+
+export const deleteProduct = createAction(ActionType.DELETE_PRODUCT, (product) => ({
+  payload: product,
+}));
+
 export const setProducts = createAction(ActionType.SET_PRODUCTS, (products) => ({
   payload: products,
 }));

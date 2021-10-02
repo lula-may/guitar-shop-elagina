@@ -1,3 +1,20 @@
+const removeElementByIndex = (items, index) => {
+  if (index === -1) {
+    return items;
+  }
+  return [...items.slice(0, index), ...items.slice(index + 1)];
+};
+
+export const deleteElement = (items, element) => {
+  const index = items.indexOf(element);
+  return removeElementByIndex(items, index);
+};
+
+export const deleteElementById = (items, elementId) => {
+  const index = items.findIndex(({id}) => id === elementId);
+  return removeElementByIndex(items, index);
+};
+
 export const filterProductsByPrice = (items, min=0, max=1000000) => items.filter(({price}) => (price >= min) && (price <= max));
 
 export const getBodyScrollTop = () => window.pageYOffset || (document.documentElement && document.documentElement.ScrollTop) || (document.body && document.body.scrollTop);

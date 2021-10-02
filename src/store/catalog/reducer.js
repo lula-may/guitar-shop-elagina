@@ -1,5 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { addStringsFilter, addTypeFilter, deleteStringsFilter, deleteTypeFilter, resetCatalogPage, setCatalogPage, setMaxPrice, setMinPrice, setProducts, setSortDirection, setSortType, updateStringsFilter } from '../actions';
+import { deleteElement } from '../../utils';
 
 const initialState = {
   currentPage: 1,
@@ -10,14 +11,6 @@ const initialState = {
   stringsFilters: [],
   sortDirection: null,
   sortType: null,
-};
-
-const deleteElement = (items, element) => {
-  const index = items.indexOf(element);
-  if (index === -1) {
-    return items;
-  }
-  return [...items.slice(0, index), ...items.slice(index + 1)];
 };
 
 const reducer = createReducer(initialState, (builder) => {
