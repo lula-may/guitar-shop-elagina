@@ -1,20 +1,23 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { selectCartCount } from '../../store/cart/selectors';
 import './style.scss';
 
 export default function Header() {
+  const cartCount = useSelector(selectCartCount);
   return (
     <header className="main-header">
       <nav className="main-header__nav main-nav">
         <div className="main-nav__wrapper">
           <div className="main-nav__logo logo">
-            <Link to="#" className="logo__link">
+            <Link to="/" className="logo__link">
               <img src="img/logo-black.png" width="67" height="70" alt="Логотип Guitar Shop" />
             </Link>
           </div>
           <ul className="main-nav__site site-nav">
             <li className="site-nav__item">
-              <Link className="site-nav__link" to="#">Каталог</Link>
+              <Link className="site-nav__link" to="/">Каталог</Link>
             </li>
             <li className="site-nav__item">
               <Link className="site-nav__link" to="#">Где купить?</Link>
@@ -42,11 +45,11 @@ export default function Header() {
               </Link>
             </li>
             <li className="user-nav__item">
-              <Link to="#" className="user-nav__link" aria-label="Корзина">
+              <Link to="/cart" className="user-nav__link" aria-label="Корзина">
                 <svg className="user-nav__icon" width="16" height="18">
                   <use xlinkHref="#basket"/>
                 </svg>
-                <span className="user-nav__counter">2</span>
+                {cartCount && <span className="user-nav__counter">{cartCount}</span>}
               </Link>
             </li>
           </ul>
