@@ -7,6 +7,8 @@ import Header from '../header/header';
 import Footer from '../footer/footer';
 import Product from '../product/product';
 import Promocode from '../promocode/promocode';
+import { useSelector } from 'react-redux';
+import { getCartList } from '../../store/cart/selectors';
 
 const pages = [
   {id: 1, url: '/', text: 'Главная'},
@@ -16,6 +18,7 @@ const pages = [
 
 
 export default function Cart() {
+  const products = useSelector(getCartList);
   return (
     <Fragment>
       <Header/>
@@ -27,8 +30,11 @@ export default function Cart() {
           </div>
           <div className="cart">
             <div className="cart__list">
-              <Product/>
-              <Product/>
+              {products.map((product) => (
+                <Product
+                  key={product.id}
+                  product={product}
+                />))}
             </div>
             <footer className="cart__footer">
               <div className="cart__container">

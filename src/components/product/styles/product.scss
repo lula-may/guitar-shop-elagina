@@ -66,6 +66,7 @@
     font-size: 14px;
     line-height: 1.071;
     letter-spacing: 0.05em;
+    text-transform: capitalize;
   }
 }
 .product__numbers {
@@ -105,6 +106,7 @@
 
     color: inherit;
     font-size: $fnt-size-label;
+    text-align: center;
 
     border-top: none;
     border-bottom: none;
