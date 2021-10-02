@@ -1,14 +1,20 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useCallback, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import './style.scss';
 
 import Breadcrumbs from '../breadcrumbs/breadcrumbs';
 import Header from '../header/header';
 import Footer from '../footer/footer';
+import Popup from '../popup/popup';
 import Product from '../product/product';
 import Promocode from '../promocode/promocode';
+
 import { useSelector } from 'react-redux';
 import { getCartList } from '../../store/cart/selectors';
+import { useDispatch } from 'react-redux';
+import { deletePopup, setPopup, setPopupProduct } from '../../store/actions';
+import { getPopup } from '../../store/page/selectors';
+import { PopupType } from '../../const';
 
 const pages = [
   {id: 1, url: '/', text: 'Главная'},
@@ -19,6 +25,20 @@ const pages = [
 
 export default function Cart() {
   const products = useSelector(getCartList);
+  const popup = useSelector(getPopup);
+  const dispatch = useDispatch();
+
+  const onDeleteButtonClick = useCallback((product) => {
+    dispatch(setPopup(PopupType.DELETE));
+    dispatch(setPopupProduct(product));
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (popup === PopupType.SUCCESS) {
+      dispatch(deletePopup());
+    }
+  });
+
   return (
     <Fragment>
       <Header/>
@@ -33,6 +53,7 @@ export default function Cart() {
               {products.map((product) => (
                 <Product
                   key={product.id}
+                  onDeleteButtonClick={onDeleteButtonClick}
                   product={product}
                 />))}
             </div>
@@ -50,6 +71,7 @@ export default function Cart() {
       </main>
 
       <Footer/>
+      {popup && <Popup/>}
     </Fragment>
   );
 }

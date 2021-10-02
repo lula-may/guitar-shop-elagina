@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import PropTypes from 'prop-types';
 import './style.scss';
 
 import { PRODUCT } from '../props';
 import { GuitarOption } from '../../const';
 
-export default function Product({product}) {
+export default function Product({onDeleteButtonClick, product}) {
   const {article, name, type, strings, price} = product;
   const {preview, type: text} = GuitarOption[type];
   const totalPrice = price;
+
+  const handleDeleteButtonClick = useCallback(() => onDeleteButtonClick(product), [onDeleteButtonClick, product]);
+
   return (
     <div className="product">
-      <button className="product__delete" aria-label="Удалить из корзины"></button>
+      <button
+        className="product__delete"
+        onClick={handleDeleteButtonClick}
+        aria-label="Удалить из корзины"
+      />
       <div className="product__info">
         <div className="product__image">
           <img src={preview} width="48" height="128" alt="Фото гитары " />
@@ -35,5 +43,6 @@ export default function Product({product}) {
 }
 
 Product.propTypes = {
+  onDeleteButtonClick: PropTypes.func.isRequired,
   product: PRODUCT.isRequired,
 };
