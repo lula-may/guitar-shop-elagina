@@ -26,7 +26,7 @@ export default function Popup() {
   }, [dispatch]);
 
   const onAddToCartClick = useCallback(() => {
-    dispatch(addProduct(product));
+    dispatch(addProduct({product, counter: 1}));
     dispatch(deletePopup());
     dispatch(setPopup(PopupType.SUCCESS));
   }, [dispatch, product]);

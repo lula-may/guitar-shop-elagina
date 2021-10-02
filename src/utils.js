@@ -10,10 +10,20 @@ export const deleteElement = (items, element) => {
   return removeElementByIndex(items, index);
 };
 
-export const deleteElementById = (items, elementId) => {
-  const index = items.findIndex(({id}) => id === elementId);
+export const deleteProductById = (items, elementId) => {
+  const index = items.findIndex(({product}) => product.id === elementId);
   return removeElementByIndex(items, index);
 };
+
+export const replaceCartElement = (elements, element) => {
+  const index = elements.findIndex(({product}) => product.id === element.product.id);
+  if (index === -1) {
+    return elements;
+  }
+  return [...elements.slice(0, index), element, ...elements.slice(index + 1)];
+};
+
+export const getElementById = (elements, elementId) => elements.find(({id}) => id === elementId);
 
 export const filterProductsByPrice = (items, min=0, max=1000000) => items.filter(({price}) => (price >= min) && (price <= max));
 
