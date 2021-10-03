@@ -10,7 +10,7 @@ import Product from '../product/product';
 import Promocode from '../promocode/promocode';
 
 import { useSelector } from 'react-redux';
-import { getCartList, selectCartTotalPrice } from '../../store/cart/selectors';
+import { getCartList, selectCartPriceWithDiscount } from '../../store/cart/selectors';
 import { useDispatch } from 'react-redux';
 import { deletePopup, setPopup, setPopupProduct } from '../../store/actions';
 import { getPopup } from '../../store/page/selectors';
@@ -25,7 +25,7 @@ const pages = [
 
 export default function Cart() {
   const products = useSelector(getCartList);
-  const totalPrice = useSelector(selectCartTotalPrice);
+  const totalPrice = useSelector(selectCartPriceWithDiscount);
   const popup = useSelector(getPopup);
   const dispatch = useDispatch();
 

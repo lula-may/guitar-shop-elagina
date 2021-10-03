@@ -9,7 +9,8 @@ import {getBodyScrollTop, isVerticalScroll } from '../../utils';
 import { useSelector } from 'react-redux';
 import { getCurrentProduct, getPopup } from '../../store/page/selectors';
 import { useDispatch } from 'react-redux';
-import { addProduct, deletePopup, deleteProduct, setPopup } from '../../store/actions';
+import { addProduct, deletePopup, deleteProduct, setPopup, updateCartProduct } from '../../store/actions';
+import { getCartList } from '../../store/cart/selectors';
 
 const OVERLAY_CLASS = 'overlay';
 
@@ -17,6 +18,7 @@ export default function Popup() {
   const type = useSelector(getPopup);
   const product = useSelector(getCurrentProduct);
   const dispatch = useDispatch();
+  const productsInCart = useSelector(getCartList);
 
   const [pageTopPosition, setYPosition] = useState(getBodyScrollTop());
   const [pageLeftPosition, setXPosition] = useState(document.body.offsetLeft);
@@ -26,10 +28,16 @@ export default function Popup() {
   }, [dispatch]);
 
   const onAddToCartClick = useCallback(() => {
-    dispatch(addProduct({product, counter: 1}));
+    const cartElement = productsInCart.find(({product: cartProduct}) => product.id === cartProduct.id);
+    if (cartElement) {
+      const {counter} = cartElement;
+      dispatch(updateCartProduct({product, counter: counter + 1}));
+    } else {
+      dispatch(addProduct({product, counter: 1}));
+    }
     dispatch(deletePopup());
     dispatch(setPopup(PopupType.SUCCESS));
-  }, [dispatch, product]);
+  }, [dispatch, product, productsInCart]);
 
   const onDeleteFromCartClick = useCallback(() => {
     dispatch(deleteProduct(product));

@@ -62,3 +62,8 @@ export const sortProductsByFeature = (items, feature, direction) => {
   return items.slice().sort((left, right) => Sort[direction](left[feature], right[feature]));
 };
 
+export const PromoCode = {
+  GITARAHIT: (price) => price * 0.9,
+  SUPERGITARA: (price) => price - 700,
+  GITARA2020: (price) => (3000 / price > 0.3) ? price * 0.7 : price - 3000,
+};
