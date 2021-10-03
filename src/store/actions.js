@@ -17,6 +17,7 @@ export const ActionType = {
   SET_SORT_TYPE: 'CATALOG/SET_SORT_TYPE',
   SET_POPUP: 'PAGE/SET_POPUP',
   SET_POPUP_PRODUCT: 'PAGE/SET_POPUP_PRODUCT',
+  SET_PROMO_CODE: 'CART/SET_PROMO_CODE',
   UPDATE_CART_PRODUCT: 'CART/UPDATE_CART_PRODUCT',
   UPDATE_STRINGS_FILTER: 'CATALOG/UPDATE_STRINGS_FILTER',
 };
@@ -71,6 +72,10 @@ export const setPopupProduct = createAction(ActionType.SET_POPUP_PRODUCT, (produ
 
 export const setProducts = createAction(ActionType.SET_PRODUCTS, (products) => ({
   payload: products,
+}));
+
+export const setPromoCode = createAction(ActionType.SET_PROMO_CODE, (code) => ({
+  payload: code,
 }));
 
 export const setSortDirection = createAction(ActionType.SET_SORT_DIRECTION, (direction) => ({
