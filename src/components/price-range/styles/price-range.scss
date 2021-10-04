@@ -19,6 +19,10 @@
     border: 1px solid $bdr-clr-input;
     border-radius: 2px;
   }
+
+  input:hover {
+    border-color: $dash-clr;
+  }
 }
 
 .price-range__dash {
