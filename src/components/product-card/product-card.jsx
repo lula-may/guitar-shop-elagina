@@ -17,14 +17,15 @@ export default function ProductCard({product, onCartButtonClick}) {
     type,
   } = product;
 
-  const {url} = GuitarOption[type];
+  const {urls} = GuitarOption[type];
+  const [url, url2x] = urls;
   const ratingStyle = useMemo(() => ({width: getRatingWidth(rating)}), [rating]);
   const handleCartButtonClick = useCallback(() => onCartButtonClick(product), [onCartButtonClick, product]);
 
   return (
     <article className="card">
       <h3 className="visually-hidden">Карточка товара</h3>
-      <div className="card__image"><img src={url} width="68" height="190" alt={name} /></div>
+      <div className="card__image"><img src={url} srcSet={`${url2x} 2x`} width="68" height="190" alt={name} /></div>
       <div className="card__reviews">
         <div className="rating">
           <span className="rating__active" style={ratingStyle}></span>
@@ -33,7 +34,7 @@ export default function ProductCard({product, onCartButtonClick}) {
       </div>
       <dl className="card__info">
         <dt>{name}</dt>
-        <dd>{price.toLocaleString('ru-RU')} ₽</dd>
+        <dd>{price.toLocaleString('ru-RU')}&nbsp;₽</dd>
       </dl>
       <div className="card__footer">
         <Link className="card__button button button--plain" to="#">Подробнее</Link>

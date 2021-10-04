@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="main-footer__container">
           <div className="main-footer__logo logo">
             <Link to="#" className="logo__link">
-              <img src="img/logo-white.png" width="67" height="70" alt="Логотип Guitar Shop" />
+              <img src="img/logo-white.png" srcSet="img/logo-white@2x.png 2x" width="67" height="70" alt="Логотип Guitar Shop" />
             </Link>
           </div>
           <div className="main-footer__item">

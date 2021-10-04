@@ -50,3 +50,9 @@
   }
 }
 
+@media (max-width: $mobile-width) {
+  .product-info__image {
+    margin-right: 15px;
+    margin-left: 0;
+  }
+}

@@ -8,8 +8,6 @@
 .main-nav__wrapper {
   @include container();
   display: flex;
-  flex-wrap: wrap;
-
 }
 
 .main-nav__logo {

@@ -8,6 +8,10 @@
   background-position-y: 69px, 0;
   background-size: auto, 884px 295px;
 
+  @media (min-resolution: 2dppx) {
+    background-image: url("../img/line-footer.svg"), url("../img/guitar-footer@2x.png");
+  }
+
   h4 {
     @include offset-reset();
     font-size: $fnt-size-basic;
@@ -122,6 +126,9 @@
 }
 
 @media (max-width: $mobile-width) {
+  .main-footer {
+    background-position-x: 0, -230px;
+  }
   .main-footer__container {
     display: flex;
     flex-direction: column;

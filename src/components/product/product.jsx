@@ -9,7 +9,8 @@ import { setPopup, setPopupProduct, updateCartProduct } from '../../store/action
 
 export default function Product({counter, product}) {
   const {article, id, name, type, strings, price} = product;
-  const {preview, type: text} = GuitarOption[type];
+  const {previews, type: text} = GuitarOption[type];
+  const [preview, preview2x] = previews;
   const totalPrice = price * counter;
   const dispatch = useDispatch();
 
@@ -41,7 +42,7 @@ export default function Product({counter, product}) {
       />
       <div className="product__info">
         <div className="product__image">
-          <img src={preview} width="48" height="128" alt="Фото гитары " />
+          <img src={preview} srcSet={`${preview2x} 2x`} width="48" height="128" alt="Фото гитары " />
         </div>
         <div className="product__description">
           <h2>Гитара {name}</h2>

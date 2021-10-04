@@ -12,7 +12,7 @@ export default function Header() {
         <div className="main-nav__wrapper">
           <div className="main-nav__logo logo">
             <Link to="/" className="logo__link">
-              <img src="img/logo-black.png" width="67" height="70" alt="Логотип Guitar Shop" />
+              <img src="img/logo-black.png" srcSet="img/logo-black@2x.png 2x" width="67" height="70" alt="Логотип Guitar Shop" />
             </Link>
           </div>
           <ul className="main-nav__site site-nav">
@@ -57,7 +57,7 @@ export default function Header() {
       </nav>
       <div className="main-header__image">
         <div className="main-header__container">
-          <img src="img/guitar-header.png" width="878" height="282" alt="Электрогитара" />
+          <img src="img/guitar-header.png" srcSet="img/guitar-header@2x.png 2x" width="878" height="282" alt="Электрогитара" />
         </div>
       </div>
     </header>

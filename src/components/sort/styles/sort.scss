@@ -60,4 +60,17 @@
   }
 }
 
+@media (max-width: $mobile-width) {
+  .sort__wrapper {
+    flex-wrap: wrap;
+  }
 
+  .sort__feature {
+    margin-right: 15px;
+  }
+
+  .sort__button {
+    margin-right: 4px;
+    margin-left: 4px;
+  }
+}

@@ -1,5 +1,5 @@
 .promocode {
-  h3 {
+  h2 {
     @include offset-reset();
     margin-bottom: 9px;
     margin-top: 3px;
@@ -40,8 +40,7 @@
 }
 
 .promocode__button {
-  padding-left: 22px;
-  padding-right: 22px;
+  padding: 10px 22px;
   min-width: 200px;
 
   @include big-button-font();
@@ -58,4 +57,20 @@
   line-height: 1;
   letter-spacing: 0.05em;
   color: $text-clr-counter;
+}
+
+@media (max-width: $mobile-width) {
+  .promocode {
+    margin-bottom: 20px;
+  }
+
+  .promocode__wrapper {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+
+    input {
+      margin-bottom: 20px;
+    }
+  }
 }

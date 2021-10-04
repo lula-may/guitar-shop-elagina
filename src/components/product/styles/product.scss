@@ -135,3 +135,13 @@
     background-image: url("../img/plus.svg");
   }
 }
+
+@media (max-width: $mobile-width) {
+  .product {
+    grid-template-columns: 1fr;
+  }
+
+  .product__counter {
+    margin-top: 0;
+  }
+}

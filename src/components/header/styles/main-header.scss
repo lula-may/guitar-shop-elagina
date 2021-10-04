@@ -40,3 +40,8 @@
   }
 }
 
+@media (max-width: $mobile-width) {
+  .main-header__image img {
+    left: 0;
+  }
+}

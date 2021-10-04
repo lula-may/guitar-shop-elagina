@@ -3,20 +3,20 @@ export const ESC_KEY = 'Escape';
 export const GuitarOption = {
   acoustic: {
     type: 'акустическая гитара',
-    url: 'img/classic.png',
-    preview: 'img/classic-small.png',
+    urls: ['img/classic.png', 'img/classic@2x.png'],
+    previews: ['img/classic-small.png', 'img/classic-small@2x.png'],
     strings: [6, 7, 12],
   },
   electro: {
     type: 'электрогитара',
-    url: 'img/electro.png',
-    preview: 'img/electro-small.png',
+    urls: ['img/electro.png', 'img/electro@2x.png'],
+    previews: ['img/electro-small.png', 'img/electro-small@2x.png'],
     strings: [4, 6, 7],
   },
   ukulele: {
     type: 'укулеле',
-    url: 'img/ukulele.png',
-    preview: 'img/ukulele-small.png',
+    urls: ['img/ukulele.png', 'img/ukulele@2x.png'],
+    previews: ['img/ukulele-small.png', 'img/ukulele-small@2x.png'],
     strings: [4],
   },
 };
