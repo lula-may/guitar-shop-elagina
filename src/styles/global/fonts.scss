@@ -1,10 +1,10 @@
 @font-face {
-  font-family: "Poppins";
+  font-family: "Droid Sans";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("../../fonts/Poppins-Regular.woff2") format("woff2"),
-    url("../../fonts/Poppins-Regular.woff") format("woff");
+  src: url("../../fonts/droid-sans.woff2") format("woff2"),
+    url("../../fonts/droid-sans.woff") format("woff");
 }
 
 @font-face {
@@ -12,16 +12,16 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url("../../fonts/droidsans-bold.woff2") format("woff2"),
-    url("../../fonts/droidsans-bold.woff") format("woff");
+  src: url("../../fonts/droid-sans-bold.woff2") format("woff2"),
+    url("../../fonts/droid-sans-bold.woff") format("woff");
 }
 
 @font-face {
-  font-family: "Droid Sans";
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("./../../fonts/droidsans.woff2") format("woff2"),
-    url("./../../fonts/droidsans.woff") format("woff");
+  src: url("../../fonts/Poppins-Regular.woff2") format("woff2"),
+    url("../../fonts/Poppins-Regular.woff") format("woff");
 }
 
