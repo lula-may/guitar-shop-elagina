@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 
-import './style.scss';
+import './styles/style.scss';
 import App from './components/app/app';
 import { products } from './mocks/data';
 import { rootReducer } from './store/root-reducer';
