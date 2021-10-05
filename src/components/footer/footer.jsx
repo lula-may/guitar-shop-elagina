@@ -1,16 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { AppRoute } from '../../const';
 import './style.scss';
 
 export default function Footer() {
+  const location = useLocation();
+  const isRootPage = location.pathname === AppRoute.ROOT;
+
   return (
     <footer className="main-footer">
       <div className="main-footer__wrapper">
         <div className="main-footer__container">
           <div className="main-footer__logo logo">
-            <Link to="#" className="logo__link">
-              <img src="img/logo-white.png" srcSet="img/logo-white@2x.png 2x" width="67" height="70" alt="Логотип Guitar Shop" />
-            </Link>
+            {isRootPage ? <img src="img/logo-white.png" srcSet="img/logo-white@2x.png 2x" width="67" height="70" alt="Логотип Guitar Shop" /> :
+              <Link to={AppRoute.ROOT} className="logo__link">
+                <img src="img/logo-white.png" srcSet="img/logo-white@2x.png 2x" width="67" height="70" alt="Логотип Guitar Shop" />
+              </Link>}
           </div>
           <div className="main-footer__item">
             <h4>О нас</h4>

@@ -1,3 +1,8 @@
+export const AppRoute = {
+  ROOT: '/',
+  CART: '/cart',
+};
+
 export const ESC_KEY = 'Escape';
 
 export const GuitarOption = {

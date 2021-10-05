@@ -50,6 +50,7 @@ export default function Cart() {
             <Breadcrumbs links={pages} />
           </div>
           <div className="cart">
+            <h2 className="visually-hidden">Список товаров в корзине</h2>
             <div className="cart__list">
               {products.map(({product, counter}) => (
                 <Product
