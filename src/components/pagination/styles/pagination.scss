@@ -24,13 +24,12 @@
   &:active {
     opacity: 0.3;
   }
-
 }
 
 .pagination__button {
   padding-right: 22px;
   padding-left: 20px;
-
+  cursor: pointer;
   &--forward {
     margin-left: 4px;
   }
@@ -40,11 +39,12 @@
   }
 }
 
-.pagination__link,
-.pagination__dots {
+.pagination__link {
   min-width: 24px;
   padding-right: 5px;
   padding-left: 5px;
+
+  cursor: pointer;
 
   &:not(:last-child) {
     margin-right: 10px;
@@ -55,6 +55,13 @@
     border: none;
     background-color: $dash-clr;
   }
+}
+
+.pagination__link,
+.pagination__dots {
+  min-width: 24px;
+  padding-right: 5px;
+  padding-left: 5px;
 }
 
 .pagination__link--current,

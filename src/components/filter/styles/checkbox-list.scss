@@ -25,6 +25,7 @@
 
     border: 1px solid $bdr-clr-input;
     border-radius: 2px;
+    cursor: pointer;
   }
 
   input:checked + label::before {
@@ -36,6 +37,7 @@
   input:hover + label::before {
     border-color: $dash-clr;
   }
+
   input:focus + label::before  {
     box-shadow: 0 0 0 2px $text-clr-basic;
   }
