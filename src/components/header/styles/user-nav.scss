@@ -1,6 +1,8 @@
 .user-nav {
   display: flex;
   flex-wrap: wrap;
+  flex-shrink: 0;
+  width: 154px;
   padding-right: 6px;
   padding-top: 15px;
 
@@ -28,7 +30,17 @@
 }
 
 @media (max-width: $tablet-width) {
+  .user-nav {
+    width: 144px;
+  }
+
   .user-nav__item {
     margin: 0 3px;
+  }
+}
+
+@media (max-width: $mobile-width) {
+  .user-nav {
+    width: auto;
   }
 }
