@@ -6,6 +6,16 @@ import { resetCatalogPage, setMaxPrice as setFilterMaxPrice, setMinPrice as setF
 import { selectProductMaxPrice, selectProductMinPrice } from '../../store/catalog/selectors';
 import { useDispatch } from 'react-redux';
 
+const constrainValue = (value, min, max) => {
+  if (value < min) {
+    return min;
+  }
+  if (value > max) {
+    return max;
+  }
+  return value;
+};
+
 export default function PriceRange() {
   const max = useSelector(selectProductMaxPrice);
   const min = useSelector(selectProductMinPrice);
@@ -13,31 +23,26 @@ export default function PriceRange() {
   const [maxPrice, setMaxPrice] = useState(max);
   const dispatch = useDispatch();
 
-  const doOnPriceChange = useCallback(() => {
-    dispatch(setFilterMinPrice(minPrice));
-    dispatch(setFilterMaxPrice(maxPrice));
+  const doOnPriceChange = useCallback((minValue, maxValue) => {
+    dispatch(setFilterMinPrice(minValue));
+    dispatch(setFilterMaxPrice(maxValue));
     dispatch(resetCatalogPage());
-  }, [dispatch, maxPrice, minPrice]);
+  }, [dispatch]);
 
-  const handleMinPriceChange = useCallback(() => {
-    if (minPrice > maxPrice) {
-      setMinPrice(maxPrice);
-    }
-    if (minPrice < min) {
-      setMinPrice(min);
-    }
-    doOnPriceChange();
+  const handleMinPriceBlur = useCallback(() => {
+    const minValue = (minPrice === undefined) ? min : constrainValue(minPrice, min, maxPrice);
+    doOnPriceChange(minValue, maxPrice);
+    setMinPrice(minValue);
   }, [doOnPriceChange, maxPrice, min, minPrice]);
 
-  const handleMaxPriceChange = useCallback(() => {
-    if (maxPrice < minPrice) {
-      setMaxPrice(minPrice);
-    }
-    if (maxPrice > max) {
-      setMaxPrice(max);
-    }
-    doOnPriceChange();
+  const handleMaxPriceBlur = useCallback(() => {
+    const maxValue = (maxPrice === undefined) ? max : constrainValue(maxPrice, minPrice, max);
+    doOnPriceChange(minPrice, maxValue);
+    setMaxPrice(maxValue);
   }, [doOnPriceChange, max, maxPrice, minPrice]);
+
+  const handleMinFocus = useCallback(() => setMinPrice(''), []);
+  const handleMaxFocus = useCallback(() => setMaxPrice(''), []);
 
   return (
     <div className="price-range">
@@ -47,9 +52,10 @@ export default function PriceRange() {
           type="text"
           thousandSeparator=" "
           allowNegative={false}
-          isNumericString
-          onValueChange={({value}) => setMinPrice(Number(value))}
-          onBlur={handleMinPriceChange}
+          allowLeadingZeros={false}
+          onBlur={handleMinPriceBlur}
+          onFocus={handleMinFocus}
+          onValueChange={({floatValue}) => setMinPrice(floatValue)}
           value={minPrice}
         />
         <label className="visually-hidden" htmlFor="price-min">Минимальная цена</label>
@@ -61,10 +67,11 @@ export default function PriceRange() {
           type="text"
           thousandSeparator=" "
           allowNegative={false}
-          isNumericString
+          allowLeadingZeros={false}
           value={maxPrice}
-          onValueChange={({value}) => setMaxPrice(Number(value))}
-          onBlur={handleMaxPriceChange}
+          onBlur={handleMaxPriceBlur}
+          onFocus={handleMaxFocus}
+          onValueChange={({floatValue}) => setMaxPrice(floatValue)}
         />
         <label className="visually-hidden" htmlFor="price-max">Максимальная цена</label>
       </div>
