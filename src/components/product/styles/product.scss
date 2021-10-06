@@ -81,10 +81,16 @@
 }
 
 .product__price {
+  width: 33%;
+  margin-right: auto;
   font-weight: normal;
 }
 
 .product__total {
+  width: 33%;
+  margin-left: auto;
+
+  text-align: right;
   font-weight: bold;
 }
 
