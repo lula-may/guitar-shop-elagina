@@ -3,6 +3,7 @@ export const AppRoute = {
   CART: '/cart',
 };
 
+export const ENTER_KEY = 'Enter';
 export const ESC_KEY = 'Escape';
 
 export const GuitarOption = {

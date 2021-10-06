@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from 'react';
 import NumberFormat from 'react-number-format';
 import './style.scss';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { resetCatalogPage, setMaxPrice as setFilterMaxPrice, setMinPrice as setFilterMinPrice } from '../../store/actions';
 import { selectProductMaxPrice, selectProductMinPrice } from '../../store/catalog/selectors';
-import { useDispatch } from 'react-redux';
 import { ENTER_KEY } from '../../const';
 
 const constrainValue = (value, min, max) => {
