@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { resetCatalogPage, setMaxPrice as setFilterMaxPrice, setMinPrice as setFilterMinPrice } from '../../store/actions';
 import { selectProductMaxPrice, selectProductMinPrice } from '../../store/catalog/selectors';
 import { useDispatch } from 'react-redux';
+import { ENTER_KEY } from '../../const';
 
 const constrainValue = (value, min, max) => {
   if (value < min) {
@@ -29,17 +30,36 @@ export default function PriceRange() {
     dispatch(resetCatalogPage());
   }, [dispatch]);
 
-  const handleMinPriceBlur = useCallback(() => {
+  const changeMinPrice = useCallback(() => {
     const minValue = (minPrice === undefined) ? min : constrainValue(minPrice, min, maxPrice);
     doOnPriceChange(minValue, maxPrice);
     setMinPrice(minValue);
   }, [doOnPriceChange, maxPrice, min, minPrice]);
 
-  const handleMaxPriceBlur = useCallback(() => {
+  const changeMaxPrice = useCallback(() => {
     const maxValue = (maxPrice === undefined) ? max : constrainValue(maxPrice, minPrice, max);
     doOnPriceChange(minPrice, maxValue);
     setMaxPrice(maxValue);
-  }, [doOnPriceChange, max, maxPrice, minPrice]);
+  }, [doOnPriceChange, maxPrice, max, minPrice]);
+
+
+  const handleMinPriceBlur = useCallback(() => changeMinPrice(), [changeMinPrice]);
+
+  const handleMaxPriceBlur = useCallback(() => changeMaxPrice(), [changeMaxPrice]);
+
+  const handleEnterPress = useCallback((evt) => {
+    if (evt.key === ENTER_KEY) {
+      switch (evt.target.id) {
+        case 'price-min':
+          changeMinPrice();
+          break;
+        case 'price-max':
+          changeMaxPrice();
+          break;
+        default: break;
+      }
+    }
+  }, [changeMaxPrice, changeMinPrice]);
 
   const handleMinFocus = useCallback(() => setMinPrice(''), []);
   const handleMaxFocus = useCallback(() => setMaxPrice(''), []);
@@ -55,6 +75,7 @@ export default function PriceRange() {
           allowLeadingZeros={false}
           onBlur={handleMinPriceBlur}
           onFocus={handleMinFocus}
+          onKeyPress={handleEnterPress}
           onValueChange={({floatValue}) => setMinPrice(floatValue)}
           value={minPrice}
         />
@@ -71,6 +92,7 @@ export default function PriceRange() {
           value={maxPrice}
           onBlur={handleMaxPriceBlur}
           onFocus={handleMaxFocus}
+          onKeyPress={handleEnterPress}
           onValueChange={({floatValue}) => setMaxPrice(floatValue)}
         />
         <label className="visually-hidden" htmlFor="price-max">Максимальная цена</label>
