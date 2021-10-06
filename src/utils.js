@@ -41,12 +41,12 @@ export const getPagesList = (current, last) => {
     case 3: return [1, 2, 3];
     default:
       if (current < 3) {
-        return [1, 2, false, last];
+        return [1, 2, 'dot-1', last];
       }
       if (current >= last - 1) {
-        return [1, false, last - 1, last];
+        return [1, 'dot-1', last - 1, last];
       }
-      return [1, false, current, false, last];
+      return [1, 'dot-1', current, 'dot-2', last];
   }
 };
 

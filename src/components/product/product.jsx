@@ -31,6 +31,14 @@ export default function Product({counter, product}) {
     }
   }, [counter, dispatch, openPopup, product]);
 
+  const handleCountInputChange = useCallback(({target}) => {
+    const newValue = Number(target.value);
+    if (isNaN(newValue)) {
+      return;
+    }
+    dispatch(updateCartProduct({product, counter: newValue}));
+  }, [dispatch, product]);
+
   const handleDeleteButtonClick = useCallback(() => openPopup(), [openPopup]);
 
   return (
@@ -64,7 +72,7 @@ export default function Product({counter, product}) {
             name={`counter-${id}`}
             id={`counter-${id}`}
             value={counter}
-            readOnly
+            onChange={handleCountInputChange}
           />
           <button
             className="product__control product__control--plus"

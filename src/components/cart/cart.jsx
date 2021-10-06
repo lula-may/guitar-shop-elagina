@@ -14,11 +14,11 @@ import { getCartList, selectCartPriceWithDiscount } from '../../store/cart/selec
 import { useDispatch } from 'react-redux';
 import { deletePopup, setPopup, setPopupProduct } from '../../store/actions';
 import { getPopup } from '../../store/page/selectors';
-import { PopupType } from '../../const';
+import { AppRoute, PopupType } from '../../const';
 
-const pages = [
-  {id: 1, url: '/', text: 'Главная'},
-  {id: 2, url: '/', text: 'Каталог'},
+const PAGES = [
+  {id: 1, url: AppRoute.ROOT, text: 'Главная'},
+  {id: 2, url: AppRoute.ROOT, text: 'Каталог'},
   {id: 3, text: 'Оформляем'},
 ];
 
@@ -47,7 +47,7 @@ export default function Cart() {
         <div className="main__wrapper">
           <h1>Корзина</h1>
           <div className="main__breadcrumbs">
-            <Breadcrumbs links={pages} />
+            <Breadcrumbs links={PAGES} />
           </div>
           <div className="cart">
             <h2 className="visually-hidden">Список товаров в корзине</h2>

@@ -7,6 +7,8 @@ import { getClassName, getPagesList } from '../../utils';
 import { useDispatch } from 'react-redux';
 import { setCatalogPage } from '../../store/actions';
 
+const NUMBER_TYPE = 'number';
+
 export default function Pagination() {
   const currentPage = useSelector(getCurrentPage);
   const lastPage = useSelector(selectLastPage);
@@ -24,7 +26,7 @@ export default function Pagination() {
 
   const renderPaginationItem = useCallback((value, index) => {
     const isCurrentPage = value === currentPage;
-    if (value) {
+    if (typeof value === NUMBER_TYPE) {
       return (
         <button
           className={getClassName('pagination__item', 'pagination__link', isCurrentPage && 'pagination__link--current')}
@@ -37,7 +39,7 @@ export default function Pagination() {
       );
     }
     return (
-      <span key={`dots-${index}`} className="pagination__item pagination__dots">...</span>
+      <span key={value} className="pagination__item pagination__dots">...</span>
     );
   }, [currentPage, handlePageButtonClick]);
 
