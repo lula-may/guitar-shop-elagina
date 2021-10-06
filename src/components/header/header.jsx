@@ -63,7 +63,7 @@ export default function Header() {
             </li>
             <li className="user-nav__item">
               {isCartPage ?
-                <div>{renderBasket()}</div> :
+                <div className="user-nav__link">{renderBasket()}</div> :
                 <Link to={AppRoute.CART} className="user-nav__link" aria-label="Корзина">
                   {renderBasket()}
                 </Link>}
